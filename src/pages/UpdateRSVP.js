@@ -1,12 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import UpdateRsvpForm from '../components/UpdateRsvpForm';
+import { Container, Typography } from '@mui/material';
 
 export default class UpdateRSVP extends Component {
+  redirect = () => {
+    this.props.history.push('/');
+  };
   render() {
+    const { firstName, lastName } = this.props.match.params;
     return (
-      <div>
-        <h1>Update RSVP for {this.props.match.params.firstName + ' ' + this.props.match.params.lastName}</h1>
-      </div>
+      <Container id="new-rsvp-container">
+        <div id="page-title" style={{ textAlign: 'center' }}>
+          <Typography variant="h2">Update RSVP</Typography>
+        </div>
+        <UpdateRsvpForm firstName={firstName} lastName={lastName} redirect={this.redirect} />
+      </Container>
     );
   }
 }

@@ -13,6 +13,9 @@ import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { LOCAL_API_URL } from '../config';
 
+/* 
+* TODO: Add eventAttendance condition based on guestCode
+*/
 export default class RsvpForm extends Component {
   constructor(props) {
     super(props);
