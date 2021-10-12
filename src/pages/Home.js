@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { Container, Typography, Button, Stack } from '@mui/material';
+import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 
 export default class Home extends Component {
   constructor(props) {
@@ -8,6 +9,9 @@ export default class Home extends Component {
 
     this.state = {
       guestCode: '',
+      dialogOpen: false,
+      firstName: '',
+      lastName: '',
     };
   }
 
@@ -17,8 +21,29 @@ export default class Home extends Component {
     }
   };
 
+  /*
+   * Handles form text field changes
+   */
+  handleInputChange = (event) => {
+    const { value, id } = event.target;
+    this.setState({
+      [id]: value,
+    });
+  };
+
+  openDialog = () => {
+    this.setState({ dialogOpen: true });
+  };
+
+  redirectToUpdateRsvpPage = (firstName, lastName) => {
+    this.setState({ dialogOpen: false });
+    this.props.history.push(`/rsvp/${firstName}/${lastName}`);
+  }
+
+
   render() {
-    const { guestCode } = this.state;
+    const { dialogOpen } = this.state;
+    const guestCode = '4d4e520d0a';
 
     return (
       <Container id="page-container" style={{ textAlign: 'center' }}>
@@ -30,7 +55,7 @@ export default class Home extends Component {
               onClick={() => this.props.history.push(`${guestCode}/rsvp`)}>
               RSVP
             </Button>
-            <Button variant="contained" onClick={() => this.props.history.push(`/rsvp/1232423`)}>
+            <Button variant="contained" onClick={this.openDialog}>
               Modify RSVP
             </Button>
             <Button
@@ -40,6 +65,7 @@ export default class Home extends Component {
             </Button>
           </Stack>
           <Button />
+          {dialogOpen && <ModifyRsvpDialog dialogOpen={dialogOpen} redirect={this.redirectToUpdateRsvpPage} />}
         </Container>
       </Container>
     );
