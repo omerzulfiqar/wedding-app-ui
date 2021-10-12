@@ -38,11 +38,11 @@ export default class Home extends Component {
   redirectToUpdateRsvpPage = (firstName, lastName) => {
     this.setState({ dialogOpen: false });
     this.props.history.push(`/rsvp/${firstName}/${lastName}`);
-  }
-
+  };
 
   render() {
     const { dialogOpen } = this.state;
+    // TODO: make dyanmic
     const guestCode = '4d4e520d0a';
 
     return (
@@ -65,7 +65,9 @@ export default class Home extends Component {
             </Button>
           </Stack>
           <Button />
-          {dialogOpen && <ModifyRsvpDialog dialogOpen={dialogOpen} redirect={this.redirectToUpdateRsvpPage} />}
+          {dialogOpen && (
+            <ModifyRsvpDialog dialogOpen={dialogOpen} redirect={this.redirectToUpdateRsvpPage} />
+          )}
         </Container>
       </Container>
     );
