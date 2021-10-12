@@ -23,11 +23,7 @@ export default class RsvpForm extends Component {
       lastName: '',
       numberOfGuests: '',
       phoneNumber: '',
-      eventAttendance: {
-        Mehndi: false,
-        Nikkah: false,
-        Reception: false,
-      },
+      eventAttendance: {},
       submitLoading: false,
       submitted: false,
       allowedEvents: null,
@@ -40,7 +36,12 @@ export default class RsvpForm extends Component {
       const response = await axios.get(`${LOCAL_API_URL}/eventsInformation/${guestCode}`);
       console.log(response);
       const { events } = response.data;
-      this.setState({ allowedEvents: events });
+      let { eventAttendance } = this.state;
+      events.forEach((event) => {
+        eventAttendance[event.name] = false;
+      });
+      console.log(eventAttendance);
+      this.setState({ allowedEvents: events, eventAttendance });
     } catch (error) {
       console.log(error);
     }
