@@ -10,6 +10,7 @@ import {
   Button,
 } from '@mui/material';
 import axios from 'axios';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { LOCAL_API_URL } from '../config';
 
 export default class RsvpForm extends Component {
@@ -114,6 +115,7 @@ export default class RsvpForm extends Component {
           <FormLabel>Please enter your information below</FormLabel>
           <TextField
             name="given-name"
+            autoComplete="given-name"
             id="firstName"
             margin="normal"
             required
@@ -124,6 +126,7 @@ export default class RsvpForm extends Component {
           <TextField
             name="family-name"
             id="lastName"
+            autoComplete="family-name"
             margin="normal"
             required
             label="Last Name"
@@ -132,6 +135,7 @@ export default class RsvpForm extends Component {
           />
           <TextField
             id="numberOfGuests"
+            type="number"
             margin="normal"
             required
             label="Number Of Guests (Including You)"
@@ -141,6 +145,7 @@ export default class RsvpForm extends Component {
           <TextField
             type="tel"
             id="phoneNumber"
+            autoComplete="phone"
             margin="normal"
             required
             label="Phone Number"
@@ -186,8 +191,9 @@ export default class RsvpForm extends Component {
             disabled={submitDisabled || submitLoading}
             variant="contained"
             color="success"
-            onClick={this.handleSubmit}>
-            Submit
+            onClick={this.handleSubmit}
+            style={{ marginTop: 10 }}>
+            <CheckCircleIcon /> Submit
           </Button>
         </FormGroup>
       </Container>
