@@ -4,17 +4,15 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  parser: 'babel-eslint',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
-    semi: ["error", "always"],
-    "object-curly-spacing": [2, "always"],
+    semi: ['error', 'always'],
+    'object-curly-spacing': [2, 'always'],
   },
 };
