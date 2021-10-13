@@ -5,7 +5,7 @@ import RsvpForm from '../components/RsvpForm';
 
 export default class NewRSVP extends Component {
   redirectHome = () => {
-    this.props.history.push('/');
+    this.props.history.push(`/${this.props.match.params.guestCode}`);
   };
   render() {
     return (

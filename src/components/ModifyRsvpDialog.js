@@ -35,6 +35,7 @@ export default class ModifyRsvpDialog extends Component {
   onCancel = () => {
     const { open } = this.state;
     this.setState({ open: !open, firstName: '', lastName: '' });
+    this.props.onCancel();
   };
 
   onProceed = () => {

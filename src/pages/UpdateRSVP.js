@@ -5,7 +5,8 @@ import { Container, Typography } from '@mui/material';
 
 export default class UpdateRSVP extends Component {
   redirect = () => {
-    this.props.history.push('/');
+    const { guestCode } = this.props.match.params;
+    this.props.history.push(`/${guestCode}`);
   };
 
   render() {

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Container, Typography, Button, Stack } from '@mui/material';
 import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 
-
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -38,15 +37,17 @@ export default class Home extends Component {
 
   redirectToUpdateRsvpPage = (firstName, lastName) => {
     this.setState({ dialogOpen: false });
-    this.props.history.push(`/rsvp/${firstName}/${lastName}`);
+    const { guestCode } = this.state;
+    this.props.history.push(`/${guestCode}/rsvp/${firstName}/${lastName}`);
   };
 
-
+  onDialogCancel = () => {
+    this.setState({ dialogOpen: false });
+  };
 
   render() {
     const { dialogOpen, guestCode } = this.state;
     // TODO: make dyanmic
-
 
     return (
       <Container id="page-container" style={{ textAlign: 'center' }}>
@@ -69,7 +70,11 @@ export default class Home extends Component {
           </Stack>
           <Button />
           {dialogOpen && (
-            <ModifyRsvpDialog dialogOpen={dialogOpen} redirect={this.redirectToUpdateRsvpPage} />
+            <ModifyRsvpDialog
+              dialogOpen={dialogOpen}
+              redirect={this.redirectToUpdateRsvpPage}
+              onCancel={this.onDialogCancel}
+            />
           )}
         </Container>
       </Container>

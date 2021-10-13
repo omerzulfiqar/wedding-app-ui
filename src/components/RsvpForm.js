@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { LOCAL_API_URL } from '../config';
+import { PRODUCT_API_URL } from '../config';
 import Loading from '../components/Loading';
 
 export default class RsvpForm extends Component {
@@ -34,7 +34,7 @@ export default class RsvpForm extends Component {
   componentDidMount = async () => {
     const { guestCode } = this.props;
     try {
-      const response = await axios.get(`${LOCAL_API_URL}/eventsInformation/${guestCode}`);
+      const response = await axios.get(`${PRODUCT_API_URL}/eventsInformation/${guestCode}`);
       const { events } = response.data;
       let { eventAttendance } = this.state;
       events.forEach((event) => {
@@ -93,7 +93,7 @@ export default class RsvpForm extends Component {
     };
 
     try {
-      const response = await axios.post(`${LOCAL_API_URL}/rsvp`, rsvpData);
+      const response = await axios.post(`${PRODUCT_API_URL}/rsvp`, rsvpData);
       console.log('Create RSVP response: ', response);
 
       //   Reset initial states

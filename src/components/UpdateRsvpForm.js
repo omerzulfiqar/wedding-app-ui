@@ -14,7 +14,7 @@ import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Loading from './Loading';
-import { LOCAL_API_URL } from '../config';
+import { PRODUCT_API_URL } from '../config';
 
 /*
  * TODO: Figure out a better way to render the checkboxes without making an api call
@@ -29,6 +29,7 @@ export default class UpdateRsvpForm extends Component {
       submitLoading: false,
       allowedEvents: null,
       error: false,
+      guestCode: null,
     };
   }
 
@@ -38,13 +39,15 @@ export default class UpdateRsvpForm extends Component {
     try {
       const params = { firstName, lastName };
       // Get RSVP record for user
-      const getRSVPResponse = await axios.get(`${LOCAL_API_URL}/rsvp/${guestId}`, {
+      const getRSVPResponse = await axios.get(`${PRODUCT_API_URL}/rsvp/${guestId}`, {
         params: params,
       });
       const rsvpEntry = getRSVPResponse.data;
       // Using the guestCode, get the allowed events for the user
       const { guestCode } = rsvpEntry;
-      const getEventsResponse = await axios.get(`${LOCAL_API_URL}/eventsInformation/${guestCode}`);
+      const getEventsResponse = await axios.get(
+        `${PRODUCT_API_URL}/eventsInformation/${guestCode}`,
+      );
       const { events } = getEventsResponse.data;
       this.setState({ rsvpEntry, allowedEvents: events });
     } catch (error) {
@@ -118,9 +121,13 @@ export default class UpdateRsvpForm extends Component {
     const params = { firstName, lastName };
 
     try {
-      const response = await axios.put(`${LOCAL_API_URL}/rsvp/${guestId}/update`, updatedRsvpData, {
-        params: params,
-      });
+      const response = await axios.put(
+        `${PRODUCT_API_URL}/rsvp/${guestId}/update`,
+        updatedRsvpData,
+        {
+          params: params,
+        },
+      );
       console.log('Update RSVP response: ', response);
 
       //   Redirect Home
@@ -131,15 +138,15 @@ export default class UpdateRsvpForm extends Component {
     }
   };
 
-  /* 
-  * 404 render error
-  */
+  /*
+   * 404 render error
+   */
   renderError = () => {
     return (
       <div style={{ textAlign: 'center', marginTop: 30 }}>
         <Typography style={{ textAlign: 'center' }} variant="h6">
-          Uh oh! We ran into an error looking for your record 😔  Please make sure your name is spelled
-          correctly. If this happens again, please create a new RSVP record. Thank you! 🤗
+          Uh oh! We ran into an error looking for your record 😔 Please make sure your name is
+          spelled correctly. If this happens again, please create a new RSVP record. Thank you! 🤗
         </Typography>
         <Button
           style={{ margin: 10 }}

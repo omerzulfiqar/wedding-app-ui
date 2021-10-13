@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Container, Typography, Stack, Card, CardContent, Link } from '@mui/material';
 import axios from 'axios';
-import { LOCAL_API_URL } from '../config';
+import { PRODUCT_API_URL } from '../config';
 import AddToCalendar from '@culturehq/add-to-calendar';
 import '../App.css';
 import Loading from '../components/Loading';
@@ -20,7 +20,7 @@ export default class EventsInfo extends Component {
   componentDidMount = async () => {
     const { guestCode } = this.props.match.params;
     try {
-      const response = await axios.get(`${LOCAL_API_URL}/eventsInformation/${guestCode}`);
+      const response = await axios.get(`${PRODUCT_API_URL}/eventsInformation/${guestCode}`);
       const { events } = response.data;
       this.setState({ allowedEvents: events });
     } catch (error) {
