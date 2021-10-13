@@ -6,6 +6,7 @@ import axios from 'axios';
 import { LOCAL_API_URL } from '../config';
 import AddToCalendar from '@culturehq/add-to-calendar';
 import '../App.css';
+import Loading from '../components/Loading';
 
 export default class EventsInfo extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ export default class EventsInfo extends Component {
         <div id="page-title">
           <Typography variant="h2">Event(s) Information</Typography>
         </div>
+        {!allowedEvents && <Loading />}
         {allowedEvents && (
           <Stack spacing={4} style={{ marginTop: 10 }}>
             {allowedEvents.map((event) => {
@@ -57,7 +59,7 @@ export default class EventsInfo extends Component {
               else if (event.name === 'Reception') name = 'Wedding Reception';
               return (
                 <div id="event-info" key={event.name} style={{ marginTop: 30, marginBottom: 30 }}>
-                  <Card variant="outlined" key={event.name}>
+                  <Card variant="outlined" key={event.name} style={{ borderRadius: 15 }}>
                     <CardContent>
                       <Typography variant="h5">{name}</Typography>
                       <div id="location" style={{ display: 'inline-flex' }}>

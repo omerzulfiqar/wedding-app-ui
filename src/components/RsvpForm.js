@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { LOCAL_API_URL } from '../config';
-
+import Loading from '../components/Loading';
 
 export default class RsvpForm extends Component {
   constructor(props) {
@@ -123,7 +123,7 @@ export default class RsvpForm extends Component {
    */
   renderEventsCheckboxes = () => {
     const { eventAttendance, allowedEvents } = this.state;
-
+  
     return (
       <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
         <FormLabel required component="legend">
@@ -205,6 +205,7 @@ export default class RsvpForm extends Component {
             onChange={this.handleInputChange}
           />
           {allowedEvents && this.renderEventsCheckboxes()}
+          {!allowedEvents && <Loading />}
           <Button
             disabled={submitDisabled || submitLoading}
             variant="contained"
