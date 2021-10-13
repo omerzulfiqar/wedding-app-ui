@@ -16,7 +16,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { LOCAL_API_URL } from '../config';
 
 /*
- * TODO: Add eventAttendance condition based on guestCode
+ * TODO: Figure out a better way to render the checkboxes without making an api call
  * TODO: Add UI for record not found
  * TODO: Add UI for loading
  */

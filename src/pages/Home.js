@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Container, Typography, Button, Stack } from '@mui/material';
 import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 
+
 export default class Home extends Component {
   constructor(props) {
     super(props);

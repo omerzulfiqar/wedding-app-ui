@@ -36,13 +36,11 @@ export default class RsvpForm extends Component {
     const { guestCode } = this.props;
     try {
       const response = await axios.get(`${LOCAL_API_URL}/eventsInformation/${guestCode}`);
-      console.log(response);
       const { events } = response.data;
       let { eventAttendance } = this.state;
       events.forEach((event) => {
         eventAttendance[event.name] = false;
       });
-      console.log(eventAttendance);
       this.setState({ allowedEvents: events, eventAttendance });
     } catch (error) {
       console.log(error);
