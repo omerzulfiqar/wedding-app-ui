@@ -40,7 +40,8 @@ export default class ModifyRsvpDialog extends Component {
 
   onProceed = () => {
     const { firstName, lastName } = this.state;
-    this.props.redirect(firstName, lastName);
+    
+    this.props.redirect(firstName.trim(), lastName.trim());
   };
 
   render() {
