@@ -8,17 +8,18 @@ import {
   FormLabel,
   FormControlLabel,
   Button,
+  Typography,
 } from '@mui/material';
 import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-
+import Loading from './Loading';
 import { LOCAL_API_URL } from '../config';
 
 /*
  * TODO: Figure out a better way to render the checkboxes without making an api call
  * TODO: Add UI for record not found
- * TODO: Add UI for loading
+ * TODO: Add loading animation
  */
 
 export default class UpdateRsvpForm extends Component {
@@ -29,6 +30,7 @@ export default class UpdateRsvpForm extends Component {
       rsvpEntry: null,
       submitLoading: false,
       allowedEvents: null,
+      error: false,
     };
   }
 
@@ -48,6 +50,7 @@ export default class UpdateRsvpForm extends Component {
       const { events } = getEventsResponse.data;
       this.setState({ rsvpEntry, allowedEvents: events });
     } catch (error) {
+      this.setState({ error: true, rsvpEntry: {} });
       console.log(error);
     }
   };
@@ -130,11 +133,33 @@ export default class UpdateRsvpForm extends Component {
     }
   };
 
-  render() {
-    const { rsvpEntry, submitLoading, allowedEvents } = this.state;
+  /* 
+  * 404 render error
+  */
+  renderError = () => {
+    return (
+      <div style={{ textAlign: 'center', marginTop: 30 }}>
+        <Typography style={{ textAlign: 'center' }} variant="h6">
+          Uh oh! We ran into an error looking for your record 😔  Please make sure your name is spelled
+          correctly. If this happens again, please create a new RSVP record. Thank you! 🤗
+        </Typography>
+        <Button
+          style={{ margin: 10 }}
+          variant="contained"
+          color="info"
+          onClick={this.props.redirect}>
+          Back
+        </Button>
+      </div>
+    );
+  };
 
-    if (!rsvpEntry) {
-      return <div>Loading</div>;
+  render() {
+    const { rsvpEntry, submitLoading, allowedEvents, error } = this.state;
+
+    if (!rsvpEntry) return <Loading />;
+    else if (error) {
+      return this.renderError();
     }
 
     const {
@@ -148,64 +173,66 @@ export default class UpdateRsvpForm extends Component {
 
     return (
       <Container maxWidth="sm">
-        <FormGroup id="new-rsvp-form">
-          <FormLabel>Please enter your information below</FormLabel>
-          <TextField
-            name="given-name"
-            autoComplete="given-name"
-            id="firstName"
-            margin="normal"
-            required
-            disabled
-            label="First Name"
-            value={firstName}
-          />
-          <TextField
-            name="family-name"
-            id="lastName"
-            autoComplete="family-name"
-            margin="normal"
-            disabled
-            required
-            label="Last Name"
-            value={lastName}
-          />
-          <TextField
-            id="numberOfGuests"
-            type="number"
-            margin="normal"
-            required
-            label="Number Of Guests (Including You)"
-            value={numberOfGuests}
-            onChange={this.handleInputChange}
-          />
-          <TextField
-            type="tel"
-            id="phoneNumber"
-            autoComplete="phone"
-            margin="normal"
-            required
-            label="Phone Number"
-            value={phoneNumber}
-            onChange={this.handleInputChange}
-          />
-          {allowedEvents && this.renderEventsCheckboxes()}
-          <Button
-            disabled={updateDisabled || submitLoading}
-            variant="contained"
-            color="success"
-            onClick={this.handleSubmit}
-            style={{ marginTop: 10 }}>
-            <CheckCircleIcon /> Update
-          </Button>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={this.props.redirect}
-            style={{ marginTop: 10 }}>
-            <CancelIcon /> Cancel
-          </Button>
-        </FormGroup>
+        {rsvpEntry && (
+          <FormGroup id="new-rsvp-form">
+            <FormLabel>Please enter your information below</FormLabel>
+            <TextField
+              name="given-name"
+              autoComplete="given-name"
+              id="firstName"
+              margin="normal"
+              required
+              disabled
+              label="First Name"
+              value={firstName}
+            />
+            <TextField
+              name="family-name"
+              id="lastName"
+              autoComplete="family-name"
+              margin="normal"
+              disabled
+              required
+              label="Last Name"
+              value={lastName}
+            />
+            <TextField
+              id="numberOfGuests"
+              type="number"
+              margin="normal"
+              required
+              label="Number Of Guests (Including You)"
+              value={numberOfGuests}
+              onChange={this.handleInputChange}
+            />
+            <TextField
+              type="tel"
+              id="phoneNumber"
+              autoComplete="phone"
+              margin="normal"
+              required
+              label="Phone Number"
+              value={phoneNumber}
+              onChange={this.handleInputChange}
+            />
+            {allowedEvents && this.renderEventsCheckboxes()}
+            <Button
+              disabled={updateDisabled || submitLoading}
+              variant="contained"
+              color="success"
+              onClick={this.handleSubmit}
+              style={{ marginTop: 10 }}>
+              <CheckCircleIcon /> Update
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={this.props.redirect}
+              style={{ marginTop: 10 }}>
+              <CancelIcon /> Cancel
+            </Button>
+          </FormGroup>
+        )}
       </Container>
     );
   }

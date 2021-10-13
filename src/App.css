@@ -68,11 +68,11 @@
 }
 
 .chq-atc--button svg {
-  vertical-align: text-bottom;
+  vertical-align: sub;
 }
 
 .chq-atc--button path {
-  fill: #6a89af;
+  fill: darkred;
 }
 
 .chq-atc--dropdown {

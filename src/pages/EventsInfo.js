@@ -27,6 +27,9 @@ export default class EventsInfo extends Component {
     }
   };
 
+  /*
+   * Renders button to download calendar event
+   */
   renderCalendarEvent = (event) => {
     const calendarEvent = {
       name: `Omer's & Kayanat's ${event.name}`,
@@ -37,6 +40,7 @@ export default class EventsInfo extends Component {
     };
     return <AddToCalendar event={calendarEvent} filename={`Omer's & Kayanat's ${event.name}`} />;
   };
+
   render() {
     const { allowedEvents } = this.state;
     return (
@@ -52,7 +56,7 @@ export default class EventsInfo extends Component {
               else if (event.name === 'Nikkah') name = 'Nikkah Ceremony & Reception';
               else if (event.name === 'Reception') name = 'Wedding Reception';
               return (
-                <div key={event.name} style={{ marginTop: 30, marginBottom: 30 }}>
+                <div id="event-info" key={event.name} style={{ marginTop: 30, marginBottom: 30 }}>
                   <Card variant="outlined" key={event.name}>
                     <CardContent>
                       <Typography variant="h5">{name}</Typography>

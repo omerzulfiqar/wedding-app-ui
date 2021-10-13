@@ -41,6 +41,8 @@ export default class Home extends Component {
     this.props.history.push(`/rsvp/${firstName}/${lastName}`);
   };
 
+
+
   render() {
     const { dialogOpen } = this.state;
     // TODO: make dyanmic

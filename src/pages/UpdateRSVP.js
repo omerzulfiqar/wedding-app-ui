@@ -7,6 +7,7 @@ export default class UpdateRSVP extends Component {
   redirect = () => {
     this.props.history.push('/');
   };
+
   render() {
     const { firstName, lastName } = this.props.match.params;
     return (
