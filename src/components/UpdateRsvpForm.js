@@ -15,11 +15,11 @@ import CancelIcon from '@mui/icons-material/Cancel';
 
 import { LOCAL_API_URL } from '../config';
 
-/* 
-* TODO: Add eventAttendance condition based on guestCode
-* TODO: Add UI for record not found
-* TODO: Add UI for loading
-*/
+/*
+ * TODO: Add eventAttendance condition based on guestCode
+ * TODO: Add UI for record not found
+ * TODO: Add UI for loading
+ */
 
 export default class UpdateRsvpForm extends Component {
   constructor(props) {
@@ -28,6 +28,7 @@ export default class UpdateRsvpForm extends Component {
     this.state = {
       rsvpEntry: null,
       submitLoading: false,
+      allowedEvents: null,
     };
   }
 
@@ -36,51 +37,48 @@ export default class UpdateRsvpForm extends Component {
     const guestId = firstName.charAt(0).toLowerCase() + lastName;
     try {
       const params = { firstName, lastName };
-      const response = await axios.get(`${LOCAL_API_URL}/rsvp/${guestId}`, { params: params });
-      const rsvpEntry = response.data;
-      this.setState({ rsvpEntry });
+      // Get RSVP record for user
+      const getRSVPResponse = await axios.get(`${LOCAL_API_URL}/rsvp/${guestId}`, {
+        params: params,
+      });
+      const rsvpEntry = getRSVPResponse.data;
+      // Using the guestCode, get the allowed events for the user
+      const { guestCode } = rsvpEntry;
+      const getEventsResponse = await axios.get(`${LOCAL_API_URL}/eventsInformation/${guestCode}`);
+      const { events } = getEventsResponse.data;
+      this.setState({ rsvpEntry, allowedEvents: events });
     } catch (error) {
       console.log(error);
     }
   };
 
+  /*
+   * Render event checkboxes based on allowed events
+   */
   renderEventsCheckboxes = () => {
     const { eventAttendance } = this.state.rsvpEntry;
+    const { allowedEvents } = this.state;
     return (
       <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
         <FormLabel required component="legend">
-          Please select the events you and your party will be attending:
+          Please select the event(s) you and your party will be attending:
         </FormLabel>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={eventAttendance.mehndi}
-              name="mehndi"
-              onChange={this.handleEventsChange}
+        {allowedEvents.map((event) => {
+          const { name, timeOfEvent } = event;
+          return (
+            <FormControlLabel
+              key={name}
+              control={
+                <Checkbox
+                  checked={eventAttendance[name]}
+                  name={name}
+                  onChange={this.handleEventsChange}
+                />
+              }
+              label={`${name} - ${timeOfEvent}`}
             />
-          }
-          label="Mehndi - December 23rd, 2021"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={eventAttendance.nikkah}
-              name="nikkah"
-              onChange={this.handleEventsChange}
-            />
-          }
-          label="Nikkah - December 24th, 2021"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={eventAttendance.reception}
-              name="reception"
-              onChange={this.handleEventsChange}
-            />
-          }
-          label="Reception - December 26th, 2021"
-        />
+          );
+        })}
       </FormGroup>
     );
   };
@@ -133,7 +131,7 @@ export default class UpdateRsvpForm extends Component {
   };
 
   render() {
-    const { rsvpEntry, submitLoading } = this.state;
+    const { rsvpEntry, submitLoading, allowedEvents } = this.state;
 
     if (!rsvpEntry) {
       return <div>Loading</div>;
@@ -191,7 +189,7 @@ export default class UpdateRsvpForm extends Component {
             value={phoneNumber}
             onChange={this.handleInputChange}
           />
-          {this.renderEventsCheckboxes()}
+          {allowedEvents && this.renderEventsCheckboxes()}
           <Button
             disabled={updateDisabled || submitLoading}
             variant="contained"

@@ -14,6 +14,8 @@ import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { LOCAL_API_URL } from '../config';
 
+// TODO: Add UI for loading events
+// TODO: fix checkbox state after submission
 export default class RsvpForm extends Component {
   constructor(props) {
     super(props);
@@ -118,6 +120,9 @@ export default class RsvpForm extends Component {
     this.setState({ submitLoading: false });
   };
 
+  /*
+   * Render event checkboxes based on guestCode
+   */
   renderEventsCheckboxes = () => {
     const { eventAttendance, allowedEvents } = this.state;
 
