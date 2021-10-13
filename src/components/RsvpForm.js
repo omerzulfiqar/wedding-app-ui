@@ -9,11 +9,21 @@ import {
   FormLabel,
   FormControlLabel,
   Button,
+  Typography,
 } from '@mui/material';
 import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { PRODUCT_API_URL } from '../config';
 import Loading from '../components/Loading';
+
+const styles = {
+  container: {
+    margin: '20px auto',
+  },
+  event: {
+    fontSize: 10,
+  },
+};
 
 export default class RsvpForm extends Component {
   constructor(props) {
@@ -123,10 +133,10 @@ export default class RsvpForm extends Component {
    */
   renderEventsCheckboxes = () => {
     const { eventAttendance, allowedEvents } = this.state;
-  
+
     return (
-      <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
-        <FormLabel required component="legend">
+      <FormGroup id="events-checkboxes" style={{ margin: 10 }}>
+        <FormLabel component="line">
           Please select the event(s) you and your party will be attending:
         </FormLabel>
         {allowedEvents.map((event) => {
@@ -162,7 +172,7 @@ export default class RsvpForm extends Component {
     const submitDisabled = !firstName || !lastName || !numberOfGuests || !phoneNumber;
 
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" style={styles.container}>
         <FormGroup id="new-rsvp-form">
           <FormLabel>Please enter your information below</FormLabel>
           <TextField
@@ -172,7 +182,9 @@ export default class RsvpForm extends Component {
             margin="normal"
             required
             label="First Name"
+            size="small"
             value={firstName}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
@@ -182,7 +194,9 @@ export default class RsvpForm extends Component {
             margin="normal"
             required
             label="Last Name"
+            size="small"
             value={lastName}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
@@ -191,7 +205,9 @@ export default class RsvpForm extends Component {
             margin="normal"
             required
             label="Number Of Guests (Including You)"
+            size="small"
             value={numberOfGuests}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
@@ -201,7 +217,9 @@ export default class RsvpForm extends Component {
             margin="normal"
             required
             label="Phone Number"
+            size="small"
             value={phoneNumber}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           {allowedEvents && this.renderEventsCheckboxes()}

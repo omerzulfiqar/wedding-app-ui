@@ -51,7 +51,7 @@ export default class Home extends Component {
 
     return (
       <Container id="page-container" style={{ textAlign: 'center' }}>
-        <Typography variant="h1">Home</Typography>
+        <Typography variant="h2">Home</Typography>
         <Container id="actions-container" maxWidth="xs">
           <Stack spacing={2}>
             <Button
