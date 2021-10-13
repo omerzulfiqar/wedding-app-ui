@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/:guestCode" component={Home} />
           <Route exact path="/:guestCode/rsvp" component={NewRSVP} />
           <Route exact path="/:guestCode/eventsInformation/" component={EventsInfo} />
           <Route exact path="/rsvp/:firstName/:lastName" component={UpdateRSVP} />

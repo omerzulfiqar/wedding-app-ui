@@ -18,8 +18,6 @@ import { LOCAL_API_URL } from '../config';
 
 /*
  * TODO: Figure out a better way to render the checkboxes without making an api call
- * TODO: Add UI for record not found
- * TODO: Add loading animation
  */
 
 export default class UpdateRsvpForm extends Component {

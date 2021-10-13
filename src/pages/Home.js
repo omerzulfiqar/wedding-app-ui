@@ -44,9 +44,9 @@ export default class Home extends Component {
 
 
   render() {
-    const { dialogOpen } = this.state;
+    const { dialogOpen, guestCode } = this.state;
     // TODO: make dyanmic
-    const guestCode = '4d4e520d0a';
+
 
     return (
       <Container id="page-container" style={{ textAlign: 'center' }}>
