@@ -10,6 +10,20 @@ import {
   FormGroup,
 } from '@mui/material';
 
+const styles = {
+  proceedButton: {
+    fontFamily: 'Nunito',
+    fontWeight: 'bold',
+    fontSize: 13,
+  },
+  cancelButton: {
+    fontFamily: 'Nunito',
+    fontWeight: 'bold',
+    fontSize: 13,
+    backgroundColor: '#B22222',
+  },
+};
+
 export default class ModifyRsvpDialog extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +54,7 @@ export default class ModifyRsvpDialog extends Component {
 
   onProceed = () => {
     const { firstName, lastName } = this.state;
-    
+
     this.props.redirect(firstName.trim(), lastName.trim());
   };
 
@@ -50,7 +64,7 @@ export default class ModifyRsvpDialog extends Component {
     return (
       <Dialog id="modify-rsvp-dialog" maxWidth="xs" open={open} onClose={this.onCancel}>
         <DialogContent>
-          <Typography variant="body2">Please provide your first name and last name</Typography>
+          <Typography variant="body1">Please provide your first name and last name</Typography>
           <FormGroup>
             <TextField
               name="given-name"
@@ -58,7 +72,6 @@ export default class ModifyRsvpDialog extends Component {
               id="firstName"
               margin="normal"
               size="small"
-              required
               label="First Name"
               value={firstName}
               onChange={this.handleInputChange}
@@ -69,7 +82,6 @@ export default class ModifyRsvpDialog extends Component {
               autoComplete="family-name"
               margin="normal"
               size="small"
-              required
               label="Last Name"
               value={lastName}
               onChange={this.handleInputChange}
@@ -78,14 +90,15 @@ export default class ModifyRsvpDialog extends Component {
         </DialogContent>
         <DialogActions>
           <Button
+            style={styles.proceedButton}
             disabled={proceedDisabled}
             variant="contained"
             color="info"
             onClick={this.onProceed}>
-            <Typography variant="body2">Proceed</Typography>
+            Proceed
           </Button>
-          <Button variant="contained" color="warning" onClick={this.onCancel}>
-            <Typography variant="body2">Cancel</Typography>
+          <Button style={styles.cancelButton} variant="contained" onClick={this.onCancel}>
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>

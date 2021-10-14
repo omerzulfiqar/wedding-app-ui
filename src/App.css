@@ -1,3 +1,4 @@
+
 .chq-atc {
   display: inline-block;
   position: relative;
@@ -11,7 +12,7 @@
   /* color: #6a89af; */
   cursor: pointer;
   display: inline;
-  font-family: Nunito;
+  font-family: 'Alegreya SC';
   font-size: inherit;
   font-weight: 500;
   line-height: inherit;

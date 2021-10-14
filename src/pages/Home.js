@@ -3,6 +3,32 @@ import React, { Component } from 'react';
 import { Container, Typography, Button, Stack } from '@mui/material';
 import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 
+const styles = {
+  container: {
+    marginTop: 20,
+    marginBottom: 20,
+    textAlign: 'center',
+    alignItems: 'center',
+    margin: '20px auto',
+  },
+  subContainer: {
+    marginTop: 40,
+    marginBottom: 20,
+  },
+  title: {
+    margin: 10,
+    display: 'grid',
+  },
+  button: {
+    width: '50%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    fontFamily: 'Alegreya SC',
+    fontWeight: 'bold',
+    borderRadius: 20,
+    boxShadow: 'none',
+  },
+};
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -50,22 +76,28 @@ export default class Home extends Component {
     // TODO: make dyanmic
 
     return (
-      <Container id="page-container" style={{ textAlign: 'center' }}>
-        <Typography variant="h2">Home</Typography>
-        <Container id="actions-container" maxWidth="xs">
+      <Container id="page-container" style={styles.container}>
+        <Typography style={styles.title} variant="h3">
+          <span>Omer Zulfiqar</span>
+          <span>and</span>
+          <span>Kayanat Tanveer</span>
+        </Typography>
+        <Container id="actions-container" maxWidth="xs" style={styles.subContainer}>
           <Stack spacing={2}>
             <Button
+              style={styles.button}
               variant="contained"
               onClick={() => this.props.history.push(`${guestCode}/rsvp`)}>
               RSVP
             </Button>
-            <Button variant="contained" onClick={this.openDialog}>
+            <Button style={styles.button} variant="contained" onClick={this.openDialog}>
               Modify RSVP
             </Button>
             <Button
+              style={styles.button}
               variant="contained"
               onClick={() => this.props.history.push(`/${guestCode}/eventsInformation`)}>
-              Events Information
+              Events Info
             </Button>
           </Stack>
           <Button />

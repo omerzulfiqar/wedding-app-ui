@@ -7,15 +7,25 @@ import { createTheme, ThemeProvider } from '@mui/material';
 
 const theme = createTheme({
   typography: {
-    h2: {
-      fontFamily: 'Dancing Script',
+    h3: {
+      fontFamily: 'Great Vibes',
     },
-    h5:{
-      fontFamily: 'Nunito',
-      fontWeight: 'bold'
+    h5: {
+      fontFamily: 'Alegreya SC',
+      fontWeight: 'bold',
     },
     body1: {
-      fontFamily: 'Nunito',
+      fontFamily: 'Alegreya SC',
+      fontSize: 15,
+    },
+    body2: {
+      fontFamily: 'Alegreya SC',
+      fontSize: 15,
+      fontWeight: 'bold',
+    },
+    subtitle2: {
+      fontFamily: 'Alegreya SC',
+      fontSize: 12,
     },
   },
 });

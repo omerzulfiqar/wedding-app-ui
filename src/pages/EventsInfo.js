@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { Container, Typography, Stack, Card, CardContent, Link } from '@mui/material';
+import { Container, Typography, Stack, Card, CardContent, Link, Button } from '@mui/material';
 import axios from 'axios';
 import { PRODUCT_API_URL } from '../config';
 import AddToCalendar from '@culturehq/add-to-calendar';
@@ -39,17 +39,23 @@ export default class EventsInfo extends Component {
       startsAt: `${event.startsAt}`,
       endsAt: `${event.endsAt}`,
     };
-    return <AddToCalendar event={calendarEvent} filename={`Omer's & Kayanat's ${event.name}`} />;
+    return (
+      <AddToCalendar
+        event={calendarEvent}
+        filename={`Omer's & Kayanat's ${event.name}`}>
+        {(this.children = `Add To Calendar`)}
+      </AddToCalendar>
+    );
   };
 
   render() {
     const { allowedEvents } = this.state;
     return (
-      <Container maxWidth="sm" id="events-information-container" style={{ textAlign: 'center' }}>
+      <Container maxWidth="md" id="events-information-container" style={{ textAlign: 'center' }}>
         <div id="page-title">
           <Typography variant="h2">Event(s) Information</Typography>
         </div>
-        {!allowedEvents && <Loading />}
+        {!allowedEvents && <Loading page={true} />}
         {allowedEvents && (
           <Stack spacing={4} style={{ marginTop: 10 }}>
             {allowedEvents.map((event) => {
