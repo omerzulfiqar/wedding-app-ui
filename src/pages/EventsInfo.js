@@ -8,6 +8,18 @@ import AddToCalendar from '@culturehq/add-to-calendar';
 import '../App.css';
 import Loading from '../components/Loading';
 
+const styles = {
+  container: {
+    alignItems: 'center',
+    margin: '20px auto',
+    textAlign: 'center',
+  },
+  card: {
+    backgroundColor: '#f5ffff',
+    borderRadius: 15
+  },
+};
+
 export default class EventsInfo extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +52,7 @@ export default class EventsInfo extends Component {
       endsAt: `${event.endsAt}`,
     };
     return (
-      <AddToCalendar
-        event={calendarEvent}
-        filename={`Omer's & Kayanat's ${event.name}`}>
+      <AddToCalendar event={calendarEvent} filename={`Omer's & Kayanat's ${event.name}`}>
         {(this.children = `Add To Calendar`)}
       </AddToCalendar>
     );
@@ -51,9 +61,9 @@ export default class EventsInfo extends Component {
   render() {
     const { allowedEvents } = this.state;
     return (
-      <Container maxWidth="md" id="events-information-container" style={{ textAlign: 'center' }}>
+      <Container maxWidth="md" id="events-information-container" style={styles.container}>
         <div id="page-title">
-          <Typography variant="h2">Event(s) Information</Typography>
+          <Typography variant="h3">Event(s) Information</Typography>
         </div>
         {!allowedEvents && <Loading page={true} />}
         {allowedEvents && (
@@ -65,7 +75,7 @@ export default class EventsInfo extends Component {
               else if (event.name === 'Reception') name = 'Wedding Reception';
               return (
                 <div id="event-info" key={event.name} style={{ marginTop: 30, marginBottom: 30 }}>
-                  <Card variant="outlined" key={event.name} style={{ borderRadius: 15 }}>
+                  <Card variant="outlined" key={event.name} style={styles.card}>
                     <CardContent>
                       <Typography variant="h5">{name}</Typography>
                       <div id="location" style={{ display: 'inline-flex' }}>
