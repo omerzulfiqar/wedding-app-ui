@@ -162,7 +162,7 @@ export default class UpdateRsvpForm extends Component {
   render() {
     const { rsvpEntry, submitLoading, allowedEvents, error } = this.state;
 
-    if (!rsvpEntry) return <Loading page={true} />;
+    if (!rsvpEntry) return <Loading />;
     else if (error) {
       return this.renderError();
     }
