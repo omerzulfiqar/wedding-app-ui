@@ -20,6 +20,21 @@ import { PRODUCT_API_URL } from '../config';
  * TODO: Figure out a better way to render the checkboxes without making an api call
  */
 
+const styles = {
+  container: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  button: {
+    maxWidth: '60%',
+    margin: '10px auto',
+    fontFamily: 'Nunito',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  checkboxText: { fontWeight: 'bold' },
+};
+
 export default class UpdateRsvpForm extends Component {
   constructor(props) {
     super(props);
@@ -62,11 +77,13 @@ export default class UpdateRsvpForm extends Component {
   renderEventsCheckboxes = () => {
     const { eventAttendance } = this.state.rsvpEntry;
     const { allowedEvents } = this.state;
+    const label =
+      allowedEvents.length > 1
+        ? 'Please select the event(s) you and your party will be attending:'
+        : 'Please select the event you and your party will be attending:';
     return (
       <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
-        <FormLabel required component="legend">
-          Please select the event(s) you and your party will be attending:
-        </FormLabel>
+        <FormLabel component="legend">{label}</FormLabel>
         {allowedEvents.map((event) => {
           const { name, timeOfEvent } = event;
           return (
@@ -79,7 +96,11 @@ export default class UpdateRsvpForm extends Component {
                   onChange={this.handleEventsChange}
                 />
               }
-              label={`${name} - ${timeOfEvent}`}
+              label={
+                <span style={{ display: 'inline-flex' }}>
+                  <Typography style={styles.checkboxText}>{name} </Typography> - {timeOfEvent}
+                </span>
+              }
             />
           );
         })}
@@ -129,7 +150,7 @@ export default class UpdateRsvpForm extends Component {
         },
       );
       console.log('Update RSVP response: ', response);
-
+      this.setState({ submitLoading: false });
       //   Redirect Home
       this.props.redirect();
     } catch (error) {
@@ -144,14 +165,15 @@ export default class UpdateRsvpForm extends Component {
   renderError = () => {
     return (
       <div style={{ textAlign: 'center', marginTop: 30 }}>
-        <Typography style={{ textAlign: 'center' }} variant="h6">
+        <Typography style={{ textAlign: 'center' }} variant="body1">
           Uh oh! We ran into an error looking for your record 😔 Please make sure your name is
           spelled correctly. If this happens again, please create a new RSVP record. Thank you! 🤗
         </Typography>
         <Button
-          style={{ margin: 10 }}
+          style={styles.button}
           variant="contained"
           color="info"
+          size="small"
           onClick={this.props.redirect}>
           Back
         </Button>
@@ -180,13 +202,13 @@ export default class UpdateRsvpForm extends Component {
       <Container maxWidth="sm">
         {rsvpEntry && (
           <FormGroup id="new-rsvp-form">
-            <FormLabel>Please enter your information below</FormLabel>
+            <FormLabel>Please update your information below</FormLabel>
             <TextField
               name="given-name"
               autoComplete="given-name"
               id="firstName"
               margin="normal"
-              required
+              size="small"
               disabled
               label="First Name"
               value={firstName}
@@ -196,8 +218,8 @@ export default class UpdateRsvpForm extends Component {
               id="lastName"
               autoComplete="family-name"
               margin="normal"
+              size="small"
               disabled
-              required
               label="Last Name"
               value={lastName}
             />
@@ -205,7 +227,7 @@ export default class UpdateRsvpForm extends Component {
               id="numberOfGuests"
               type="number"
               margin="normal"
-              required
+              size="small"
               label="Number Of Guests (Including You)"
               value={numberOfGuests}
               onChange={this.handleInputChange}
@@ -215,7 +237,7 @@ export default class UpdateRsvpForm extends Component {
               id="phoneNumber"
               autoComplete="phone"
               margin="normal"
-              required
+              size="small"
               label="Phone Number"
               value={phoneNumber}
               onChange={this.handleInputChange}
@@ -224,20 +246,23 @@ export default class UpdateRsvpForm extends Component {
             <Button
               disabled={updateDisabled || submitLoading}
               variant="contained"
+              size="small"
               color="success"
               onClick={this.handleSubmit}
-              style={{ marginTop: 10 }}>
+              style={styles.button}>
               <CheckCircleIcon /> Update
             </Button>
             <Button
               variant="contained"
+              size="small"
               color="error"
               onClick={this.props.redirect}
-              style={{ marginTop: 10 }}>
+              style={styles.button}>
               <CancelIcon /> Cancel
             </Button>
           </FormGroup>
         )}
+        {submitLoading && <Loading form={true} />}
       </Container>
     );
   }
