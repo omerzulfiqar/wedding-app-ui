@@ -9,11 +9,27 @@ import {
   FormLabel,
   FormControlLabel,
   Button,
+  Typography,
 } from '@mui/material';
 import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { PRODUCT_API_URL } from '../config';
 import Loading from '../components/Loading';
+
+const styles = {
+  container: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  submitButton: {
+    maxWidth: '60%',
+    margin: '10px auto',
+    fontFamily: 'Nunito',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  checkboxText: { fontWeight: 'bold' },
+};
 
 export default class RsvpForm extends Component {
   constructor(props) {
@@ -123,11 +139,15 @@ export default class RsvpForm extends Component {
    */
   renderEventsCheckboxes = () => {
     const { eventAttendance, allowedEvents } = this.state;
-  
+    const label =
+      allowedEvents.length > 1
+        ? 'Please select the event(s) you and your party will be attending:'
+        : 'Please select the event you and your party will be attending:';
+
     return (
       <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
-        <FormLabel required component="legend">
-          Please select the event(s) you and your party will be attending:
+        <FormLabel component="legend" style={{ marginBottom: 5 }}>
+          <Typography style={{ fontWeight: 'bold' }}>{label}</Typography>
         </FormLabel>
         {allowedEvents.map((event) => {
           const { name, timeOfEvent } = event;
@@ -141,7 +161,11 @@ export default class RsvpForm extends Component {
                   onChange={this.handleEventsChange}
                 />
               }
-              label={`${name} - ${timeOfEvent}`}
+              label={
+                <span style={{ display: 'inline-flex' }}>
+                  <Typography style={{ fontWeight: 'bold' }}>{name} </Typography> - {timeOfEvent}
+                </span>
+              }
             />
           );
         })}
@@ -162,17 +186,23 @@ export default class RsvpForm extends Component {
     const submitDisabled = !firstName || !lastName || !numberOfGuests || !phoneNumber;
 
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" style={styles.container}>
         <FormGroup id="new-rsvp-form">
-          <FormLabel>Please enter your information below</FormLabel>
+          <FormLabel>
+            <Typography style={{ fontWeight: 'bold' }}>
+              Please enter your information below
+            </Typography>
+            <Typography variant="subtitle2">(All fields are required)</Typography>
+          </FormLabel>
           <TextField
             name="given-name"
             autoComplete="given-name"
             id="firstName"
             margin="normal"
-            required
             label="First Name"
+            size="small"
             value={firstName}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
@@ -180,18 +210,20 @@ export default class RsvpForm extends Component {
             id="lastName"
             autoComplete="family-name"
             margin="normal"
-            required
             label="Last Name"
+            size="small"
             value={lastName}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
             id="numberOfGuests"
             type="number"
             margin="normal"
-            required
             label="Number Of Guests (Including You)"
+            size="small"
             value={numberOfGuests}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
@@ -199,22 +231,26 @@ export default class RsvpForm extends Component {
             id="phoneNumber"
             autoComplete="phone"
             margin="normal"
-            required
             label="Phone Number"
+            size="small"
             value={phoneNumber}
+            style={styles.textField}
             onChange={this.handleInputChange}
           />
           {allowedEvents && this.renderEventsCheckboxes()}
-          {!allowedEvents && <Loading />}
+          {!allowedEvents && <Loading page={true} />}
           <Button
             disabled={submitDisabled || submitLoading}
             variant="contained"
+            size="small"
             color="success"
             onClick={this.handleSubmit}
-            style={{ marginTop: 10 }}>
-            <CheckCircleIcon /> Submit
+            style={styles.submitButton}>
+            <CheckCircleIcon />
+            {'   '} Submit
           </Button>
         </FormGroup>
+        {submitLoading && <Loading form={true} />}
       </Container>
     );
   }
