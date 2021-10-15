@@ -7,7 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 const styles = {
   container: {
     alignItems: 'center',
-    margin: '20px auto',
+    margin: '10% auto',
   },
 
 };

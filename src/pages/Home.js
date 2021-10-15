@@ -7,7 +7,7 @@ const styles = {
   container: {
     textAlign: 'center',
     alignItems: 'center',
-    margin: '50% auto',
+    margin: '40% auto',
   },
   subContainer: {
     marginTop: 40,
