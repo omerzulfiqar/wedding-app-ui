@@ -6,7 +6,7 @@ import RsvpForm from '../components/RsvpForm';
 const styles = {
   container: {
     alignItems: 'center',
-    margin: '20px auto',
+    margin: '10% auto',
   },
 };
 

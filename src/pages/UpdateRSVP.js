@@ -6,7 +6,7 @@ import { Container, Typography } from '@mui/material';
 const styles = {
   container: {
     alignItems: 'center',
-    margin: '20px auto',
+    margin: '10% auto',
     textAlign: 'center',
   },
 };

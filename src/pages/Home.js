@@ -5,11 +5,9 @@ import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 
 const styles = {
   container: {
-    marginTop: 20,
-    marginBottom: 20,
     textAlign: 'center',
     alignItems: 'center',
-    margin: '20px auto',
+    margin: '40% auto',
   },
   subContainer: {
     marginTop: 40,

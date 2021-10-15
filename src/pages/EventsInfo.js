@@ -11,7 +11,7 @@ import Loading from '../components/Loading';
 const styles = {
   container: {
     alignItems: 'center',
-    margin: '20px auto',
+    margin: '10% auto',
     textAlign: 'center',
   },
   card: {
