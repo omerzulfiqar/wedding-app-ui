@@ -15,6 +15,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Loading from './Loading';
 import { PRODUCT_API_URL } from '../config';
+import '../App.css';
 
 /*
  * TODO: Figure out a better way to render the checkboxes without making an api call
@@ -30,9 +31,13 @@ const styles = {
     margin: '10px auto',
     fontFamily: 'Nunito',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 13,
+    color: '#EAD4B7',
   },
-  checkboxText: { fontWeight: 'bold' },
+  checkboxLabel: {
+    display: 'inline-flex',
+    color: '#1D2C4C',
+  },
 };
 
 export default class UpdateRsvpForm extends Component {
@@ -83,7 +88,11 @@ export default class UpdateRsvpForm extends Component {
         : 'Please select the event you and your party will be attending:';
     return (
       <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
-        <FormLabel component="legend">{label}</FormLabel>
+        <FormLabel component="legend">
+          <Typography color="primary" variant="body2">
+            {label}
+          </Typography>
+        </FormLabel>
         {allowedEvents.map((event) => {
           const { name, timeOfEvent } = event;
           return (
@@ -91,14 +100,15 @@ export default class UpdateRsvpForm extends Component {
               key={name}
               control={
                 <Checkbox
+                  style={{ color: '#1D2C4C' }}
                   checked={eventAttendance[name]}
                   name={name}
                   onChange={this.handleEventsChange}
                 />
               }
               label={
-                <span style={{ display: 'inline-flex' }}>
-                  <Typography style={styles.checkboxText}>{name} </Typography> - {timeOfEvent}
+                <span style={styles.checkboxLabel}>
+                  <Typography variant="body2">{name} </Typography> - {timeOfEvent}
                 </span>
               }
             />
@@ -165,14 +175,14 @@ export default class UpdateRsvpForm extends Component {
   renderError = () => {
     return (
       <div style={{ textAlign: 'center', marginTop: 30 }}>
-        <Typography style={{ textAlign: 'center' }} variant="body1">
+        <Typography color="primary" style={{ textAlign: 'center' }} variant="body2">
           Uh oh! We ran into an error looking for your record 😔 Please make sure your name is
           spelled correctly. If this happens again, please create a new RSVP record. Thank you! 🤗
         </Typography>
         <Button
           style={styles.button}
           variant="contained"
-          color="info"
+          color="primary"
           size="small"
           onClick={this.props.redirect}>
           Back
@@ -199,11 +209,14 @@ export default class UpdateRsvpForm extends Component {
     const updateDisabled = !firstName || !lastName || !numberOfGuests || !phoneNumber;
 
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" style={styles.container}>
         {rsvpEntry && (
           <FormGroup id="new-rsvp-form">
-            <FormLabel>Please update your information below</FormLabel>
+            <Typography color="primary" variant="body2">
+              Please update your information below
+            </Typography>
             <TextField
+              focused
               name="given-name"
               autoComplete="given-name"
               id="firstName"
@@ -214,6 +227,7 @@ export default class UpdateRsvpForm extends Component {
               value={firstName}
             />
             <TextField
+              focused
               name="family-name"
               id="lastName"
               autoComplete="family-name"
@@ -224,6 +238,7 @@ export default class UpdateRsvpForm extends Component {
               value={lastName}
             />
             <TextField
+              focused
               id="numberOfGuests"
               type="number"
               margin="normal"
@@ -233,6 +248,7 @@ export default class UpdateRsvpForm extends Component {
               onChange={this.handleInputChange}
             />
             <TextField
+              focused
               type="tel"
               id="phoneNumber"
               autoComplete="phone"
@@ -247,18 +263,18 @@ export default class UpdateRsvpForm extends Component {
               disabled={updateDisabled || submitLoading}
               variant="contained"
               size="small"
-              color="success"
+              color="primary"
               onClick={this.handleSubmit}
               style={styles.button}>
-              <CheckCircleIcon /> Update
+              <CheckCircleIcon fontSize="small" style={{ marginRight: 2 }} /> Update
             </Button>
             <Button
               variant="contained"
               size="small"
-              color="error"
+              color="primary"
               onClick={this.props.redirect}
               style={styles.button}>
-              <CancelIcon /> Cancel
+              <CancelIcon fontSize="small" style={{ marginRight: 2 }} /> Cancel
             </Button>
           </FormGroup>
         )}

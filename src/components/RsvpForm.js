@@ -26,9 +26,13 @@ const styles = {
     margin: '10px auto',
     fontFamily: 'Nunito',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 13,
+    color: '#EAD4B7',
   },
-  checkboxText: { fontWeight: 'bold' },
+  checkboxLabel: {
+    display: 'inline-flex',
+    color: '#1D2C4C',
+  },
 };
 
 export default class RsvpForm extends Component {
@@ -147,7 +151,9 @@ export default class RsvpForm extends Component {
     return (
       <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
         <FormLabel component="legend" style={{ marginBottom: 5 }}>
-          <Typography style={{ fontWeight: 'bold' }}>{label}</Typography>
+          <Typography color="primary" variant="body2">
+            {label}
+          </Typography>
         </FormLabel>
         {allowedEvents.map((event) => {
           const { name, timeOfEvent } = event;
@@ -156,14 +162,15 @@ export default class RsvpForm extends Component {
               key={name}
               control={
                 <Checkbox
+                  style={{ color: '#1D2C4C' }}
                   checked={eventAttendance.name}
                   name={name}
                   onChange={this.handleEventsChange}
                 />
               }
               label={
-                <span style={{ display: 'inline-flex' }}>
-                  <Typography style={{ fontWeight: 'bold' }}>{name} </Typography> - {timeOfEvent}
+                <span style={styles.checkboxLabel}>
+                  <Typography variant="body2">{name} </Typography> - {timeOfEvent}
                 </span>
               }
             />
@@ -189,12 +196,15 @@ export default class RsvpForm extends Component {
       <Container maxWidth="sm" style={styles.container}>
         <FormGroup id="new-rsvp-form">
           <FormLabel>
-            <Typography style={{ fontWeight: 'bold' }}>
-              Please enter your information below
+            <Typography color="primary" variant="body2">
+              Please enter your information below *
             </Typography>
-            <Typography variant="subtitle2">(All fields are required)</Typography>
+            <Typography color="primary" variant="subtitle2">
+              (All fields are required)
+            </Typography>
           </FormLabel>
           <TextField
+            focused
             name="given-name"
             autoComplete="given-name"
             id="firstName"
@@ -202,10 +212,10 @@ export default class RsvpForm extends Component {
             label="First Name"
             size="small"
             value={firstName}
-            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
+            focused
             name="family-name"
             id="lastName"
             autoComplete="family-name"
@@ -213,20 +223,21 @@ export default class RsvpForm extends Component {
             label="Last Name"
             size="small"
             value={lastName}
-            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
+            focused
             id="numberOfGuests"
             type="number"
+            inputProps={{ min: 0 }}
             margin="normal"
             label="Number Of Guests (Including You)"
             size="small"
             value={numberOfGuests}
-            style={styles.textField}
             onChange={this.handleInputChange}
           />
           <TextField
+            focused
             type="tel"
             id="phoneNumber"
             autoComplete="phone"
@@ -234,7 +245,6 @@ export default class RsvpForm extends Component {
             label="Phone Number"
             size="small"
             value={phoneNumber}
-            style={styles.textField}
             onChange={this.handleInputChange}
           />
           {allowedEvents && this.renderEventsCheckboxes()}
@@ -243,14 +253,20 @@ export default class RsvpForm extends Component {
             disabled={submitDisabled || submitLoading}
             variant="contained"
             size="small"
-            color="success"
+            color="primary"
             onClick={this.handleSubmit}
             style={styles.submitButton}>
-            <CheckCircleIcon />
+            <CheckCircleIcon fontSize="small" />
             {'   '} Submit
           </Button>
         </FormGroup>
         {submitLoading && <Loading form={true} />}
+        <Typography
+          color="primary"
+          style={{ marginTop: 20, textAlign: 'center' }}
+          variant="subtitle2">
+          *Please create only one RSVP per family. Thank you!
+        </Typography>
       </Container>
     );
   }

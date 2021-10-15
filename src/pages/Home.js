@@ -5,11 +5,9 @@ import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 
 const styles = {
   container: {
-    marginTop: 20,
-    marginBottom: 20,
     textAlign: 'center',
     alignItems: 'center',
-    margin: '20px auto',
+    margin: '50% auto',
   },
   subContainer: {
     marginTop: 40,
@@ -27,6 +25,7 @@ const styles = {
     fontWeight: 'bold',
     borderRadius: 20,
     boxShadow: 'none',
+    color: '#EAD4B7',
   },
 };
 export default class Home extends Component {
@@ -73,11 +72,10 @@ export default class Home extends Component {
 
   render() {
     const { dialogOpen, guestCode } = this.state;
-    // TODO: make dyanmic
 
     return (
       <Container id="page-container" style={styles.container}>
-        <Typography style={styles.title} variant="h3">
+        <Typography color="primary" style={styles.title} variant="h3">
           <span>Omer Zulfiqar</span>
           <span>and</span>
           <span>Kayanat Tanveer</span>

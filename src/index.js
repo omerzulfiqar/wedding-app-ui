@@ -6,9 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import { createTheme, ThemeProvider } from '@mui/material';
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1D2C4C',
+    },
+    secondary: {
+      main: '#EAD4B7',
+      contrastText: '#1D2C4C',
+    },
+    error: {
+      main: '#e53935',
+    },
+    success: {
+      main: '#4cb150',
+    },
+  },
   typography: {
     h3: {
       fontFamily: 'Great Vibes',
+      fontWeight: '800',
     },
     h5: {
       fontFamily: 'Alegreya SC',
