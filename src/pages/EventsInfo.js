@@ -16,7 +16,7 @@ const styles = {
   },
   card: {
     backgroundColor: '#f5ffff',
-    borderRadius: 15
+    borderRadius: 15,
   },
 };
 
@@ -60,10 +60,12 @@ export default class EventsInfo extends Component {
 
   render() {
     const { allowedEvents } = this.state;
+    const heading =
+      allowedEvents && allowedEvents.length > 1 ? 'Events Information' : 'Event Information';
     return (
       <Container maxWidth="md" id="events-information-container" style={styles.container}>
         <div id="page-title">
-          <Typography variant="h3">Event(s) Information</Typography>
+          <Typography variant="h3">{heading}</Typography>
         </div>
         {!allowedEvents && <Loading page={true} />}
         {allowedEvents && (
