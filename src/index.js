@@ -9,6 +9,11 @@ const theme = createTheme({
   typography: {
     h3: {
       fontFamily: 'Great Vibes',
+      fontWeight: 'bold',
+    },
+    h2: {
+      fontFamily: 'Great Vibes',
+      fontWeight: 'bold',
     },
     h5: {
       fontFamily: 'Alegreya SC',
