@@ -25,7 +25,7 @@ export default class UpdateRSVP extends Component {
           <Typography color="primary" variant="h3">
             Update Rsvp
           </Typography>
-          <Button size="small"onClick={this.redirectHome}>
+          <Button size="small" onClick={this.redirectHome}>
             <HomeIcon />
           </Button>
         </div>

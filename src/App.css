@@ -1,3 +1,10 @@
+html {
+  background-color: #ead4b7;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
 
 .chq-atc {
   display: inline-block;
