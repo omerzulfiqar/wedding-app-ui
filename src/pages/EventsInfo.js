@@ -102,17 +102,17 @@ export default class EventsInfo extends Component {
                   <Paper key={event.name} style={styles.card} elevation={3}>
                     <Typography variant="h5">{name}</Typography>
                     <Typography variant="body1">
-                      Venue:{' '}
-                      <Link color="secondary" href={event.mapsLink}>
+                      <b>Venue: </b>{' '}
+                      <Link color={styles.card.color} href={event.mapsLink}>
                         {event.venue}
                         {event.ballroom && `, ${event.ballroom}`}
                       </Link>{' '}
                     </Typography>
                     <Typography id="event-address" variant="body1">
-                      Address: {event.address}
+                      <b>Address:</b> {event.address}
                     </Typography>
                     <Typography id="event-time" variant="body1">
-                      Time: {event.timeOfEvent}
+                      <b>Time:</b> {event.timeOfEvent}
                     </Typography>
                   </Paper>
                   {this.renderCalendarEvent(event)}

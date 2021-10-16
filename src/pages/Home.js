@@ -25,7 +25,7 @@ const styles = {
     fontWeight: 'bold',
     borderRadius: 20,
     boxShadow: 'none',
-    color: '#EAD4B7',
+    color: '#fff7ee',
   },
 };
 export default class Home extends Component {

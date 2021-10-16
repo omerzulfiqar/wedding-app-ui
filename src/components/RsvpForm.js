@@ -27,7 +27,7 @@ const styles = {
     fontFamily: 'Nunito',
     fontWeight: 'bold',
     fontSize: 13,
-    color: '#EAD4B7',
+    color: '#fff7ee',
   },
   checkboxLabel: {
     display: 'inline-flex',
