@@ -25,7 +25,7 @@ const styles = {
   container: {
     marginTop: 20,
     marginBottom: 20,
-    padding: '0 3%',
+    padding: '0 5%',
   },
   button: {
     maxWidth: '60%',
