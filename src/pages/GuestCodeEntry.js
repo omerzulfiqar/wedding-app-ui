@@ -16,6 +16,7 @@ const styles = {
     fontFamily: 'Nunito',
     fontWeight: 'bold',
     fontSize: 13,
+    color: '#FFF7EE',
   },
 };
 export default class GuestCodeEntry extends Component {
@@ -47,12 +48,14 @@ export default class GuestCodeEntry extends Component {
 
     return (
       <Container id="page-container" style={styles.container}>
-        <Typography style={styles.title} variant="h2">
+        <Typography color="primary" style={styles.title} variant="h2">
           Welcome
         </Typography>
         <Container id="actions-container" maxWidth="xs">
           <FormGroup id="guest-code-entry">
-            <Typography variant="body2">Please enter your rsvp code below</Typography>
+            <Typography color="primary" variant="body2">
+              Please enter your rsvp code below
+            </Typography>
             <TextField
               focused
               label="Rsvp Code"
@@ -66,7 +69,7 @@ export default class GuestCodeEntry extends Component {
             disabled={submitDisabled}
             variant="contained"
             size="small"
-            color="success"
+            color="primary"
             onClick={this.handleSubmit}
             style={styles.submitButton}>
             <CheckCircleIcon fontSize="small" />

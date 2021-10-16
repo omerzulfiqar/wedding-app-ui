@@ -7,14 +7,14 @@ const styles = {
   container: {
     textAlign: 'center',
     alignItems: 'center',
-    margin: '40% auto',
+    margin: '10% auto',
+    padding: 0
   },
   subContainer: {
     marginTop: 40,
     marginBottom: 20,
   },
   title: {
-    margin: 10,
     display: 'grid',
   },
   button: {
@@ -25,6 +25,7 @@ const styles = {
     fontWeight: 'bold',
     borderRadius: 20,
     boxShadow: 'none',
+    color: '#fff7ee',
   },
 };
 export default class Home extends Component {
@@ -71,17 +72,16 @@ export default class Home extends Component {
 
   render() {
     const { dialogOpen, guestCode } = this.state;
-    // TODO: make dyanmic
 
     return (
       <Container id="page-container" style={styles.container}>
-        <Typography style={styles.title} variant="h3">
+        <Typography color="primary" style={styles.title} variant="h3">
           <span>Omer Zulfiqar</span>
           <span>and</span>
           <span>Kayanat Tanveer</span>
         </Typography>
         <Container id="actions-container" maxWidth="xs" style={styles.subContainer}>
-          <Stack spacing={2}>
+          <Stack spacing={3}>
             <Button
               style={styles.button}
               variant="contained"

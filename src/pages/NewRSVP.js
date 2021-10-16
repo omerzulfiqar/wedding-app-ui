@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Button } from '@mui/material';
 import RsvpForm from '../components/RsvpForm';
+import HomeIcon from '@mui/icons-material/Home';
 
 const styles = {
   container: {
     alignItems: 'center',
-    margin: '10% auto',
+    margin: '5% auto',
+    padding: '0 1%'
   },
 };
 
@@ -18,7 +20,12 @@ export default class NewRSVP extends Component {
     return (
       <Container id="new-rsvp-container" style={styles.container}>
         <div id="page-title" style={{ textAlign: 'center' }}>
-          <Typography variant="h3">Rsvp Form</Typography>
+          <Typography color="primary" variant="h3">
+            Rsvp Form
+          </Typography>
+          <Button size="small" onClick={this.redirectHome}>
+            <HomeIcon />
+          </Button>
         </div>
         <RsvpForm guestCode={this.props.match.params.guestCode} redirect={this.redirectHome} />
       </Container>

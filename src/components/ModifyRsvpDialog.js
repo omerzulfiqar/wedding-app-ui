@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import {
@@ -9,18 +10,16 @@ import {
   DialogContent,
   FormGroup,
 } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const styles = {
-  proceedButton: {
-    fontFamily: 'Nunito',
-    fontWeight: 'bold',
-    fontSize: 13,
+  button: {
+    color: '#fff7ee',
   },
-  cancelButton: {
-    fontFamily: 'Nunito',
-    fontWeight: 'bold',
-    fontSize: 13,
-    backgroundColor: '#B22222',
+  dialog: {
+    backgroundColor: '#fff7ee',
+    border: 'solid 2px #1D2C4C',
   },
 };
 
@@ -62,11 +61,21 @@ export default class ModifyRsvpDialog extends Component {
     const { open, firstName, lastName } = this.state;
     const proceedDisabled = !firstName || !lastName;
     return (
-      <Dialog id="modify-rsvp-dialog" maxWidth="xs" open={open} onClose={this.onCancel}>
+      <Dialog
+        id="modify-rsvp-dialog"
+        maxWidth="xs"
+        PaperProps={{
+          style: styles.dialog,
+        }}
+        open={open}
+        onClose={this.onCancel}>
         <DialogContent>
-          <Typography variant="body1">Please provide your first name and last name</Typography>
+          <Typography color="primary" variant="body1">
+            Please provide your first name and last name
+          </Typography>
           <FormGroup>
             <TextField
+              focused
               name="given-name"
               autoComplete="given-name"
               id="firstName"
@@ -77,6 +86,7 @@ export default class ModifyRsvpDialog extends Component {
               onChange={this.handleInputChange}
             />
             <TextField
+              focused
               name="family-name"
               id="lastName"
               autoComplete="family-name"
@@ -89,16 +99,16 @@ export default class ModifyRsvpDialog extends Component {
           </FormGroup>
         </DialogContent>
         <DialogActions>
-          <Button
-            style={styles.proceedButton}
-            disabled={proceedDisabled}
-            variant="contained"
-            color="info"
-            onClick={this.onProceed}>
-            Proceed
+          <Button color="primary" variant="contained" style={styles.button} onClick={this.onCancel}>
+            <CancelIcon fontSize="medium" />
           </Button>
-          <Button style={styles.cancelButton} variant="contained" onClick={this.onCancel}>
-            Cancel
+          <Button
+            disabled={proceedDisabled}
+            style={styles.button}
+            variant="contained"
+            color="primary"
+            onClick={this.onProceed}>
+            <ArrowForwardIcon fontSize="medium" />
           </Button>
         </DialogActions>
       </Dialog>

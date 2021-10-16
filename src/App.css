@@ -1,3 +1,13 @@
+html {
+  background-color: #ead4b7;
+}
+
+body {
+  margin: 20% 5%;
+  padding-top: 8%;
+  padding-bottom: 50%;
+  background-color: #fff7ee;
+}
 
 .chq-atc {
   display: inline-block;
@@ -9,12 +19,12 @@
   border: 0;
   border-radius: 5px;
   box-sizing: border-box;
-  /* color: #6a89af; */
+  color: #1d2c4c;
   cursor: pointer;
   display: inline;
   font-family: 'Alegreya SC';
   font-size: inherit;
-  font-weight: 500;
+  font-weight: 600;
   line-height: inherit;
   margin: 0;
   outline: none;
@@ -27,7 +37,7 @@
 }
 
 .chq-atc--button:hover {
-  background-color: #eaeaea;
+  background-color: #a39480;
 }
 
 .chq-atc--button svg {
@@ -39,9 +49,9 @@
 }
 
 .chq-atc--dropdown {
-  background-color: white;
+  background-color: #1d2c4c;
   border-radius: 5px;
-  border: 1px solid #eaeaea;
+  border: 1px solid #fff7ee;
   box-shadow: 0.5px 0.5px 3px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   position: absolute;
@@ -52,13 +62,13 @@
 }
 
 .chq-atc--dropdown a {
-  /* color: #6a89af; */
-  color: black;
+  color: #fff7ee;
+  font-family: 'Alegreya SC';
   display: block;
   padding: 8px 15px;
   text-decoration: none;
 }
 
 .chq-atc--dropdown a:hover {
-  background-color: #eaeaea;
+  background-color: #4a566f;
 }

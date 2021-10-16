@@ -7,8 +7,8 @@ export default class Loading extends Component {
   render() {
     return (
       <Container maxWidth="xs" style={{ textAlign: 'center', marginTop: 30 }}>
-        {this.props.page && <Circles width="20%" style={{ color: '#8B008B' }} />}
-        {this.props.form && <Rings width="20%" style={{ color: '#20B2AA' }} />}
+        {this.props.page && <Circles width="20%" style={{ color: '#1D2C4C' }} />}
+        {this.props.form && <Rings width="20%" style={{ color: '#1D2C4C' }} />}
       </Container>
     );
   }
