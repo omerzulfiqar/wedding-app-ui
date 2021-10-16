@@ -15,10 +15,10 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const styles = {
   button: {
-    color: '#EFD2AE',
+    color: '#fff7ee',
   },
   dialog: {
-    backgroundColor: '#EFD2AE',
+    backgroundColor: '#fff7ee',
     border: 'solid 2px #1D2C4C',
   },
 };

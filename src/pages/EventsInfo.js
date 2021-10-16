@@ -18,7 +18,7 @@ const styles = {
   card: {
     backgroundColor: '#1D2C4C',
     borderRadius: 10,
-    padding: 15,
+    padding: '5% 3%',
     color: '#EAD4B7',
   },
   eventInfo: {
@@ -102,17 +102,17 @@ export default class EventsInfo extends Component {
                   <Paper key={event.name} style={styles.card} elevation={3}>
                     <Typography variant="h5">{name}</Typography>
                     <Typography variant="body1">
-                      <b>Venue: </b>{' '}
-                      <Link color={styles.card.color} href={event.mapsLink}>
+                      Venue:{' '}
+                      <Link color="secondary" href={event.mapsLink}>
                         {event.venue}
                         {event.ballroom && `, ${event.ballroom}`}
                       </Link>{' '}
                     </Typography>
                     <Typography id="event-address" variant="body1">
-                      <b>Address:</b> {event.address}
+                      Address: {event.address}
                     </Typography>
                     <Typography id="event-time" variant="body1">
-                      <b>Time:</b> {event.timeOfEvent}
+                      Time: {event.timeOfEvent}
                     </Typography>
                   </Paper>
                   {this.renderCalendarEvent(event)}

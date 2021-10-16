@@ -7,14 +7,13 @@ const styles = {
   container: {
     textAlign: 'center',
     alignItems: 'center',
-    margin: '40% auto',
+    margin: '10% auto',
   },
   subContainer: {
     marginTop: 40,
     marginBottom: 20,
   },
   title: {
-    margin: 10,
     display: 'grid',
   },
   button: {
@@ -81,7 +80,7 @@ export default class Home extends Component {
           <span>Kayanat Tanveer</span>
         </Typography>
         <Container id="actions-container" maxWidth="xs" style={styles.subContainer}>
-          <Stack spacing={2}>
+          <Stack spacing={3}>
             <Button
               style={styles.button}
               variant="contained"

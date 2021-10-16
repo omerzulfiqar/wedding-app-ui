@@ -3,6 +3,10 @@ html {
 }
 
 body {
+  margin: 20% 4%;
+  padding-top: 8%;
+  padding-bottom: 50%;
+  background-color: #fff7ee;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -48,7 +52,7 @@ body {
 .chq-atc--dropdown {
   background-color: #1d2c4c;
   border-radius: 5px;
-  border: 1px solid #a39480;
+  border: 1px solid #fff7ee;
   box-shadow: 0.5px 0.5px 3px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   position: absolute;
@@ -59,8 +63,8 @@ body {
 }
 
 .chq-atc--dropdown a {
-  color: #ead4b7;
-  font-family: 'Algereya SC';
+  color: #fff7ee;
+  font-family: 'Alegreya SC';
   display: block;
   padding: 8px 15px;
   text-decoration: none;
