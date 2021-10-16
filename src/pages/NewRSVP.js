@@ -8,8 +8,8 @@ const styles = {
   container: {
     alignItems: 'center',
     margin: '5% auto',
+    padding: '0 1%'
   },
-
 };
 
 export default class NewRSVP extends Component {
@@ -23,7 +23,7 @@ export default class NewRSVP extends Component {
           <Typography color="primary" variant="h3">
             Rsvp Form
           </Typography>
-          <Button size="small"onClick={this.redirectHome}>
+          <Button size="small" onClick={this.redirectHome}>
             <HomeIcon />
           </Button>
         </div>

@@ -20,6 +20,7 @@ const styles = {
   container: {
     marginTop: 20,
     marginBottom: 20,
+    padding: '0 3%',
   },
   submitButton: {
     maxWidth: '60%',
@@ -265,7 +266,7 @@ export default class RsvpForm extends Component {
           color="primary"
           style={{ marginTop: 20, textAlign: 'center' }}
           variant="subtitle2">
-          *Please create only one RSVP per family. Thank you!
+          *Please create only <b>one</b> RSVP per family. Thank you!
         </Typography>
       </Container>
     );

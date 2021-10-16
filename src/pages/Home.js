@@ -8,6 +8,7 @@ const styles = {
     textAlign: 'center',
     alignItems: 'center',
     margin: '10% auto',
+    padding: 0
   },
   subContainer: {
     marginTop: 40,

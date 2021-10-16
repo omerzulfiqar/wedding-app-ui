@@ -8,7 +8,7 @@ const styles = {
   container: {
     alignItems: 'center',
     margin: '10% auto',
-    textAlign: 'center',
+    padding: '0 1%'
   },
 };
 export default class UpdateRSVP extends Component {

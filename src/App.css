@@ -3,11 +3,10 @@ html {
 }
 
 body {
-  margin: 20% 4%;
+  margin: 20% 5%;
   padding-top: 8%;
   padding-bottom: 50%;
   background-color: #fff7ee;
-  -webkit-font-smoothing: antialiased;
 }
 
 .chq-atc {

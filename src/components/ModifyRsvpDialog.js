@@ -100,7 +100,7 @@ export default class ModifyRsvpDialog extends Component {
         </DialogContent>
         <DialogActions>
           <Button color="primary" variant="contained" style={styles.button} onClick={this.onCancel}>
-            <CancelIcon fontsize="medium" />
+            <CancelIcon fontSize="medium" />
           </Button>
           <Button
             disabled={proceedDisabled}
@@ -108,7 +108,7 @@ export default class ModifyRsvpDialog extends Component {
             variant="contained"
             color="primary"
             onClick={this.onProceed}>
-            <ArrowForwardIcon fontsize="medium" />
+            <ArrowForwardIcon fontSize="medium" />
           </Button>
         </DialogActions>
       </Dialog>

@@ -14,9 +14,11 @@ const styles = {
     alignItems: 'center',
     margin: '10% auto',
     textAlign: 'center',
+    padding: '0 1.5%',
   },
   card: {
     backgroundColor: '#1D2C4C',
+    margin: '0 1%',
     borderRadius: 10,
     padding: '5% 3%',
     color: '#EAD4B7',
@@ -76,7 +78,7 @@ export default class EventsInfo extends Component {
   render() {
     const { allowedEvents } = this.state;
     const heading =
-      allowedEvents && allowedEvents.length > 1 ? 'Events Information' : 'Event Information';
+      allowedEvents && allowedEvents.length > 1 ? 'Events Info' : 'Event Info';
     return (
       <Container maxWidth="sm" id="events-information-container" style={styles.container}>
         {!allowedEvents && <Loading page={true} />}
@@ -95,24 +97,24 @@ export default class EventsInfo extends Component {
             {allowedEvents.map((event) => {
               let name;
               if (event.name === 'Mehndi') name = 'Mehndi Celebration';
-              else if (event.name === 'Nikkah') name = 'Nikkah Ceremony & Reception';
+              else if (event.name === 'Nikkah') name = 'Nikkah Ceremony';
               else if (event.name === 'Reception') name = 'Wedding Reception';
               return (
                 <div id="event-info" key={event.name} style={styles.eventInfo}>
                   <Paper key={event.name} style={styles.card} elevation={3}>
                     <Typography variant="h5">{name}</Typography>
                     <Typography variant="body1">
-                      Venue:{' '}
+                      <b>Venue:</b>{' '}
                       <Link color="secondary" href={event.mapsLink}>
                         {event.venue}
                         {event.ballroom && `, ${event.ballroom}`}
                       </Link>{' '}
                     </Typography>
                     <Typography id="event-address" variant="body1">
-                      Address: {event.address}
+                      <b>Address:</b> {event.address}
                     </Typography>
                     <Typography id="event-time" variant="body1">
-                      Time: {event.timeOfEvent}
+                      <b>Time: </b> {event.timeOfEvent}
                     </Typography>
                   </Paper>
                   {this.renderCalendarEvent(event)}
