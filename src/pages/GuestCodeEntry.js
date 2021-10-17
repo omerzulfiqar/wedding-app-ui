@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Container, Typography, Button, FormGroup, TextField } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { GUEST_CODES } from '../config';
 
 const styles = {
   container: {
@@ -25,6 +26,7 @@ export default class GuestCodeEntry extends Component {
 
     this.state = {
       guestCode: '',
+      error: false,
     };
   }
 
@@ -33,17 +35,28 @@ export default class GuestCodeEntry extends Component {
    */
   handleInputChange = (event) => {
     const { value, id } = event.target;
-    this.setState({
-      [id]: value,
-    });
+    const { error } = this.state;
+    error
+      ? this.setState({
+          [id]: value,
+          error: false,
+        })
+      : this.setState({
+          [id]: value,
+        });
   };
 
   handleSubmit = () => {
-    this.props.history.push(`/${this.state.guestCode}`);
+    const { guestCode } = this.state;
+    if (GUEST_CODES.includes(guestCode)) {
+      this.props.history.push(`/${this.state.guestCode}`);
+    } else {
+      this.setState({ error: true });
+    }
   };
 
   render() {
-    const { guestCode } = this.state;
+    const { guestCode, error } = this.state;
     const submitDisabled = guestCode.length !== 10;
 
     return (
@@ -61,6 +74,7 @@ export default class GuestCodeEntry extends Component {
               label="Rsvp Code"
               size="small"
               id="guestCode"
+              color={error ? 'error' : 'primary'}
               style={{ marginTop: 20 }}
               onChange={this.handleInputChange}
             />
