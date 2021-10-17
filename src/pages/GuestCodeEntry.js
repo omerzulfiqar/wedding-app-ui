@@ -54,7 +54,7 @@ export default class GuestCodeEntry extends Component {
         <Container id="actions-container" maxWidth="xs">
           <FormGroup id="guest-code-entry">
             <Typography color="primary" variant="body2">
-              Please enter your rsvp code below
+              Please enter your rsvp code* below
             </Typography>
             <TextField
               focused
@@ -76,6 +76,9 @@ export default class GuestCodeEntry extends Component {
             {'   '} Submit
           </Button>
         </Container>
+        <Typography style={{ marginTop: '5%' }} color="primary" variant="subtitle2">
+          The RSVP code is the 10 character code provided to you on your invitation.
+        </Typography>
       </Container>
     );
   }

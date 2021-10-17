@@ -8,7 +8,7 @@ const styles = {
     textAlign: 'center',
     alignItems: 'center',
     margin: '10% auto',
-    padding: 0
+    padding: 0,
   },
   subContainer: {
     marginTop: 40,
@@ -18,7 +18,7 @@ const styles = {
     display: 'grid',
   },
   button: {
-    width: '50%',
+    width: '45%',
     marginLeft: 'auto',
     marginRight: 'auto',
     fontFamily: 'Alegreya SC',

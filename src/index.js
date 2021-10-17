@@ -24,15 +24,15 @@ const theme = createTheme({
   typography: {
     h3: {
       fontFamily: 'Great Vibes',
-      fontWeight: 'bold',
+      fontWeight: '800',
     },
     h2: {
       fontFamily: 'Great Vibes',
-      fontWeight: 'bold',
+      fontWeight: '800',
     },
     h5: {
       fontFamily: 'Alegreya SC',
-      fontWeight: 'bold',
+      fontWeight: '700',
     },
     body1: {
       fontFamily: 'Alegreya SC',
@@ -41,7 +41,7 @@ const theme = createTheme({
     body2: {
       fontFamily: 'Alegreya SC',
       fontSize: 15,
-      fontWeight: 'bold',
+      fontWeight: '700',
     },
     subtitle2: {
       fontFamily: 'Alegreya SC',
