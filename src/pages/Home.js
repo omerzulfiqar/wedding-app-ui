@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Container, Typography, Button, Stack } from '@mui/material';
 import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
+import { GROOM, BRIDE } from '../config';
 
 const styles = {
   container: {
@@ -76,9 +77,9 @@ export default class Home extends Component {
     return (
       <Container id="page-container" style={styles.container}>
         <Typography color="primary" style={styles.title} variant="h3">
-          <span>Omer Zulfiqar</span>
+          <span>{GROOM}</span>
           <span>and</span>
-          <span>Kayanat Tanveer</span>
+          <span>{BRIDE}</span>
         </Typography>
         <Container id="actions-container" maxWidth="xs" style={styles.subContainer}>
           <Stack spacing={3}>
