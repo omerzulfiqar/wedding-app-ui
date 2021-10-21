@@ -4,7 +4,7 @@ import { Container, Typography, Button, Stack } from '@mui/material';
 import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 import { GROOM, BRIDE } from '../config';
 import MasksIcon from '@mui/icons-material/Masks';
-import img from '../static/sample.png';
+// import img from '../static/sample.png';
 
 const styles = {
   container: {
@@ -137,7 +137,7 @@ export default class Home extends Component {
               <MasksIcon fontSize="medium" />
             </Button>
           </div>
-          <img src={img} style={styles.img} />
+          {/* <img src={img} style={styles.img} /> */}
         </Container>
       </Container>
     );
