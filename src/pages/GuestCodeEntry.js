@@ -91,7 +91,7 @@ export default class GuestCodeEntry extends Component {
           </Button>
         </Container>
         <Typography style={{ marginTop: '5%' }} color="primary" variant="subtitle2">
-          The RSVP code is the 10 character code provided to you on your invitation.
+          The RSVP code is provided to you on your invitation.
         </Typography>
       </Container>
     );

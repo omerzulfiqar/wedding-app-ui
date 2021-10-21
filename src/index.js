@@ -30,6 +30,10 @@ const theme = createTheme({
       fontFamily: 'Great Vibes',
       fontWeight: '800',
     },
+    h4: {
+      fontFamily: 'Great Vibes',
+      fontWeight: '800',
+    },
     h5: {
       fontFamily: 'Alegreya SC',
       fontWeight: '700',

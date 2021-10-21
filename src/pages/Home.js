@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Container, Typography, Button, Stack } from '@mui/material';
 import ModifyRsvpDialog from '../components/ModifyRsvpDialog';
 import { GROOM, BRIDE } from '../config';
+import MasksIcon from '@mui/icons-material/Masks';
+// import img from '../static/sample.png';
 
 const styles = {
   container: {
@@ -24,6 +26,12 @@ const styles = {
     marginRight: 'auto',
     fontFamily: 'Alegreya SC',
     fontWeight: 'bold',
+    borderRadius: 20,
+    boxShadow: 'none',
+    color: '#fff7ee',
+  },
+  covidButton: {
+    width: '10%',
     borderRadius: 20,
     boxShadow: 'none',
     color: '#fff7ee',
@@ -71,6 +79,11 @@ export default class Home extends Component {
     this.setState({ dialogOpen: false });
   };
 
+  onCovidClick = () => {
+    const { guestCode } = this.state;
+    this.props.history.push(`/${guestCode}/covidGuidelines`);
+  };
+
   render() {
     const { dialogOpen, guestCode } = this.state;
 
@@ -107,7 +120,20 @@ export default class Home extends Component {
               onCancel={this.onDialogCancel}
             />
           )}
+          {/* <img src={img} style={{ maxWidth: '-webkit-fill-available' }} /> */}
         </Container>
+        <div id="covid-button" style={{ marginTop: 10 }}>
+          <Typography color="primary" variant="subtitle2">
+            Covid-19 Guidelines
+          </Typography>
+          <Button
+            onClick={this.onCovidClick}
+            color="primary"
+            variant="contained"
+            style={styles.covidButton}>
+            <MasksIcon fontSize="medium" />
+          </Button>
+        </div>
       </Container>
     );
   }
