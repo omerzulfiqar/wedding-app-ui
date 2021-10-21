@@ -36,6 +36,7 @@ const styles = {
     boxShadow: 'none',
     color: '#fff7ee',
   },
+  img: { maxWidth: '-webkit-fill-available', marginTop: 20 },
 };
 export default class Home extends Component {
   constructor(props) {
@@ -120,20 +121,20 @@ export default class Home extends Component {
               onCancel={this.onDialogCancel}
             />
           )}
-          {/* <img src={img} style={{ maxWidth: '-webkit-fill-available' }} /> */}
+          <div id="covid-button">
+            <Typography color="primary" variant="subtitle2">
+              Covid-19 Guidelines. Please read!
+            </Typography>
+            <Button
+              onClick={this.onCovidClick}
+              color="primary"
+              variant="contained"
+              style={styles.covidButton}>
+              <MasksIcon fontSize="medium" />
+            </Button>
+          </div>
+          {/* <img src={img} style={styles.img} /> */}
         </Container>
-        <div id="covid-button" style={{ marginTop: 10 }}>
-          <Typography color="primary" variant="subtitle2">
-            Covid-19 Guidelines
-          </Typography>
-          <Button
-            onClick={this.onCovidClick}
-            color="primary"
-            variant="contained"
-            style={styles.covidButton}>
-            <MasksIcon fontSize="medium" />
-          </Button>
-        </div>
       </Container>
     );
   }
