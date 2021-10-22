@@ -79,7 +79,7 @@ export default class EventsInfo extends Component {
     const { allowedEvents } = this.state;
     const heading = allowedEvents && allowedEvents.length > 1 ? 'Events Info' : 'Event Info';
     return (
-      <Container maxWidth="sm" id="events-information-container" style={styles.container}>
+      <Container id="events-info-container" maxWidth="sm" style={styles.container}>
         {!allowedEvents && <Loading page={true} />}
         {allowedEvents && (
           <div id="page-title">

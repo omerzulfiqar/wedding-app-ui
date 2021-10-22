@@ -15,7 +15,6 @@ import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { PRODUCT_API_URL } from '../config';
 import Loading from '../components/Loading';
-import { style } from '@mui/system';
 
 const styles = {
   container: {
@@ -200,7 +199,7 @@ export default class RsvpForm extends Component {
     const submitDisabled = !firstName || !lastName || !numberOfGuests || !phoneNumber;
 
     return (
-      <Container maxWidth="sm" style={styles.container}>
+      <Container id="rsvp-form-container" maxWidth="sm" style={styles.container}>
         <FormGroup id="new-rsvp-form">
           <FormLabel>
             <Typography color="primary" variant="body2">
@@ -211,10 +210,10 @@ export default class RsvpForm extends Component {
             </Typography>
           </FormLabel>
           <TextField
+            id="firstName"
             focused
             name="given-name"
             autoComplete="given-name"
-            id="firstName"
             margin="normal"
             label="First Name"
             size="small"
@@ -222,9 +221,9 @@ export default class RsvpForm extends Component {
             onChange={this.handleInputChange}
           />
           <TextField
+            id="lastName"
             focused
             name="family-name"
-            id="lastName"
             autoComplete="family-name"
             margin="normal"
             label="Last Name"
@@ -233,8 +232,8 @@ export default class RsvpForm extends Component {
             onChange={this.handleInputChange}
           />
           <TextField
-            focused
             id="numberOfGuests"
+            focused
             type="number"
             inputProps={{ min: 0 }}
             margin="normal"
@@ -244,21 +243,22 @@ export default class RsvpForm extends Component {
             onChange={this.handleInputChange}
           />
           <TextField
+            id="phoneNumber"
             focused
             type="tel"
-            id="phoneNumber"
             autoComplete="phone"
             margin="normal"
             label="Phone Number"
             size="small"
             value={phoneNumber}
             onChange={this.handleInputChange}
-            helperText={'10 Digit Phone Number Only'}
+            helperText={'10 digit phone number only'}
             FormHelperTextProps={{ style: styles.helperText }}
           />
           {allowedEvents && this.renderEventsCheckboxes()}
           {!allowedEvents && <Loading page={true} />}
           <Button
+            id="submit-button"
             disabled={submitDisabled || submitLoading}
             variant="contained"
             size="small"

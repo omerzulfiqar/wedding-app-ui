@@ -8,7 +8,10 @@ const styles = {
   container: {
     alignItems: 'center',
     margin: '10% auto',
-    padding: '0 1%'
+    padding: '0 1%',
+  },
+  homeButton: {
+    marginTop: 10,
   },
 };
 export default class UpdateRSVP extends Component {
@@ -20,12 +23,12 @@ export default class UpdateRSVP extends Component {
   render() {
     const { firstName, lastName } = this.props.match.params;
     return (
-      <Container id="new-rsvp-container" style={styles.container}>
+      <Container id="update-rsvp-container" style={styles.container}>
         <div id="page-title" style={{ textAlign: 'center' }}>
           <Typography color="primary" variant="h3">
             Update Rsvp
           </Typography>
-          <Button size="small" onClick={this.redirectHome}>
+          <Button size="small" onClick={this.redirectHome} style={styles.homeButton}>
             <HomeIcon />
           </Button>
         </div>

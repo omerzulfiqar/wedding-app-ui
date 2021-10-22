@@ -1,7 +1,22 @@
 /* eslint-disable react/prop-types */
-import { Typography, Container, Button } from '@mui/material';
+import { Typography, Container, Button, Link, Stack } from '@mui/material';
 import React, { Component } from 'react';
 import HomeIcon from '@mui/icons-material/Home';
+
+const styles = {
+  container: {
+    paddingBottom: '20%',
+    textAlign: 'center',
+  },
+  links: {
+    marginTop: '10%',
+    display: 'grid',
+  },
+  button: {
+    textAlign: 'center',
+    marginTop: '5%',
+  },
+};
 
 export default class CovidNotice extends Component {
   redirectHome = () => {
@@ -9,11 +24,11 @@ export default class CovidNotice extends Component {
   };
   render() {
     return (
-      <Container>
+      <Container id="covid-info-container" style={styles.container}>
         <Typography color="primary" variant="h3" align="center">
           Covid-19 Info
         </Typography>
-        <div style={{ textAlign: 'center' }}>
+        <div id="home-button" style={styles.button}>
           <Button size="small" onClick={this.redirectHome}>
             <HomeIcon />
           </Button>
@@ -56,6 +71,26 @@ export default class CovidNotice extends Component {
           paragraph={true}>
           Jazakallah Khair! 🤗
         </Typography>
+        <div id="health-links" style={styles.links}>
+          <Stack spacing={2}>
+            <Link
+              id="cdc-link"
+              variant="body2"
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.cdc.gov/coronavirus/2019-ncov/your-health/gatherings.html">
+              CDC Covid Guidelines
+            </Link>
+            <Link
+              id="vdh-link"
+              variant="body2"
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.vdh.virginia.gov/coronavirus/get-the-latest-guidence/social-gatherings/">
+              Virginia Covid Guidelines
+            </Link>
+          </Stack>
+        </div>
       </Container>
     );
   }

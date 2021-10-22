@@ -8,7 +8,10 @@ const styles = {
   container: {
     alignItems: 'center',
     margin: '5% auto',
-    padding: '0 1%'
+    padding: '0 1%',
+  },
+  homeButton: {
+    marginTop: 10,
   },
 };
 
@@ -23,7 +26,11 @@ export default class NewRSVP extends Component {
           <Typography color="primary" variant="h3">
             Rsvp Form
           </Typography>
-          <Button size="small" onClick={this.redirectHome}>
+          <Button
+            id="home-button"
+            size="small"
+            onClick={this.redirectHome}
+            style={styles.homeButton}>
             <HomeIcon />
           </Button>
         </div>

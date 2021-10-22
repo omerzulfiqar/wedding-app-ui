@@ -39,6 +39,10 @@ const styles = {
     display: 'inline-flex',
     color: '#1D2C4C',
   },
+  error: {
+    textAlign: 'center',
+    marginTop: 30,
+  },
 };
 
 export default class UpdateRsvpForm extends Component {
@@ -175,7 +179,7 @@ export default class UpdateRsvpForm extends Component {
    */
   renderError = () => {
     return (
-      <div style={{ textAlign: 'center', marginTop: 30 }}>
+      <div id="rsvp-not-found-error" style={styles.error}>
         <Typography color="primary" style={{ textAlign: 'center' }} variant="body2">
           Uh oh! We ran into an error looking for your record 😔 Please make sure your name is
           spelled correctly. If this happens again, please create a new RSVP record. Thank you! 🤗
@@ -217,10 +221,10 @@ export default class UpdateRsvpForm extends Component {
               Please update your information below
             </Typography>
             <TextField
+              id="firstName"
               focused
               name="given-name"
               autoComplete="given-name"
-              id="firstName"
               margin="normal"
               size="small"
               disabled
@@ -228,9 +232,9 @@ export default class UpdateRsvpForm extends Component {
               value={firstName}
             />
             <TextField
+              id="lastName"
               focused
               name="family-name"
-              id="lastName"
               autoComplete="family-name"
               margin="normal"
               size="small"
@@ -239,8 +243,8 @@ export default class UpdateRsvpForm extends Component {
               value={lastName}
             />
             <TextField
-              focused
               id="numberOfGuests"
+              focused
               type="number"
               margin="normal"
               size="small"
@@ -249,9 +253,9 @@ export default class UpdateRsvpForm extends Component {
               onChange={this.handleInputChange}
             />
             <TextField
+              id="phoneNumber"
               focused
               type="tel"
-              id="phoneNumber"
               autoComplete="phone"
               margin="normal"
               size="small"
@@ -261,6 +265,7 @@ export default class UpdateRsvpForm extends Component {
             />
             {allowedEvents && this.renderEventsCheckboxes()}
             <Button
+              id="submit-button"
               disabled={updateDisabled || submitLoading}
               variant="contained"
               size="small"
@@ -270,6 +275,7 @@ export default class UpdateRsvpForm extends Component {
               <CheckCircleIcon fontSize="small" style={{ marginRight: 2 }} /> Update
             </Button>
             <Button
+              id="cancel-button"
               variant="contained"
               size="small"
               color="primary"
