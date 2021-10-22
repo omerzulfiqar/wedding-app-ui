@@ -73,6 +73,10 @@ export default class RsvpForm extends Component {
     }
   };
 
+  componentWillUnmount = () => {
+    clearTimeout(this.timer);
+  };
+
   /*
    * Handles form text field changes
    */
@@ -122,27 +126,13 @@ export default class RsvpForm extends Component {
     try {
       const response = await axios.post(`${PRODUCT_API_URL}/rsvp`, rsvpData);
       console.log('Create RSVP response: ', response);
-
-      //   Reset initial states
-      this.setState({
-        firstName: '',
-        lastName: '',
-        numberOfGuests: '',
-        phoneNumber: '',
-        eventAttendance: {
-          mehndi: false,
-          nikkah: false,
-          reception: false,
-        },
-        submitted: true,
-      });
+      this.setState({ submitted: true });
     } catch (error) {
       console.log('Error creating rsvp');
       console.log(error);
     }
-
     this.setState({ submitLoading: false });
-    this.props.redirect();
+    this.timer = setTimeout(() => this.resetForm(), 6000);
   };
 
   /*
@@ -188,6 +178,22 @@ export default class RsvpForm extends Component {
         })}
       </FormGroup>
     );
+  };
+
+  resetForm = () => {
+    //   Reset initial states
+    this.setState({
+      firstName: '',
+      lastName: '',
+      numberOfGuests: '',
+      phoneNumber: '',
+      eventAttendance: {
+        mehndi: false,
+        nikkah: false,
+        reception: false,
+      },
+    });
+    this.props.redirect();
   };
 
   render() {
@@ -275,13 +281,20 @@ export default class RsvpForm extends Component {
           </Button>
         </FormGroup>
         {submitLoading && <Loading form={true} />}
+        {submitted && !submitLoading && (
+          <div id="submit-confirmation">
+            <CheckCircleIcon color="success" />
+            <Typography variant="body1" color="primary">
+              Thank you! You will receive a confirmation text and be redirected to the home page.
+            </Typography>
+          </div>
+        )}
         <Typography
           align="justify"
           color="primary"
           style={{ marginTop: 20, textAlign: 'center' }}
           variant="subtitle2">
-          *Please create only <b>one</b> RSVP per family. Thank you! After submitting, you will
-          receive a confirmation text.
+          *Please create only <b>one</b> RSVP per family.
         </Typography>
       </Container>
     );
