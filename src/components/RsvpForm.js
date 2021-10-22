@@ -15,6 +15,7 @@ import axios from 'axios';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { PRODUCT_API_URL } from '../config';
 import Loading from '../components/Loading';
+import { style } from '@mui/system';
 
 const styles = {
   container: {
@@ -32,6 +33,11 @@ const styles = {
   },
   checkboxLabel: {
     display: 'inline-flex',
+    color: '#1D2C4C',
+  },
+  helperText: {
+    marginLeft: 0,
+    fontFamily: 'Alegreya SC',
     color: '#1D2C4C',
   },
 };
@@ -108,7 +114,7 @@ export default class RsvpForm extends Component {
       firstName,
       lastName,
       numberOfGuests,
-      phoneNumber,
+      phoneNumber: phoneNumber.replace(/[^0-9]/g, ''),
       eventAttendance,
       guestCode,
     };
@@ -247,6 +253,8 @@ export default class RsvpForm extends Component {
             size="small"
             value={phoneNumber}
             onChange={this.handleInputChange}
+            helperText={'10 Digit Phone Number Only'}
+            FormHelperTextProps={{ style: styles.helperText }}
           />
           {allowedEvents && this.renderEventsCheckboxes()}
           {!allowedEvents && <Loading page={true} />}
