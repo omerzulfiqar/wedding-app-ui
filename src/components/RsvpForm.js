@@ -21,6 +21,7 @@ const styles = {
     marginTop: 20,
     marginBottom: 20,
     padding: '0 5%',
+    textAlign: 'center',
   },
   submitButton: {
     maxWidth: '60%',
@@ -157,7 +158,7 @@ export default class RsvpForm extends Component {
     return (
       <FormGroup id="events-checkboxes" style={{ marginTop: 10 }}>
         <FormLabel component="legend" style={{ marginBottom: 5 }}>
-          <Typography color="primary" variant="body2">
+          <Typography align="justify" color="primary" variant="body2">
             {label}
           </Typography>
         </FormLabel>
@@ -176,7 +177,10 @@ export default class RsvpForm extends Component {
               }
               label={
                 <span style={styles.checkboxLabel}>
-                  <Typography variant="body2">{name} </Typography> - {timeOfEvent}
+                  <Typography align="justify" variant="body2">
+                    {name}{' '}
+                  </Typography>{' '}
+                  - {timeOfEvent}
                 </span>
               }
             />
@@ -194,6 +198,7 @@ export default class RsvpForm extends Component {
       phoneNumber,
       allowedEvents,
       submitLoading,
+      submitted,
     } = this.state;
 
     const submitDisabled = !firstName || !lastName || !numberOfGuests || !phoneNumber;
@@ -202,10 +207,10 @@ export default class RsvpForm extends Component {
       <Container id="rsvp-form-container" maxWidth="sm" style={styles.container}>
         <FormGroup id="new-rsvp-form">
           <FormLabel>
-            <Typography color="primary" variant="body2">
+            <Typography align="justify" color="primary" variant="body2">
               Please enter your information below *
             </Typography>
-            <Typography color="primary" variant="subtitle2">
+            <Typography align="justify" color="primary" variant="subtitle2">
               (All fields are required)
             </Typography>
           </FormLabel>
@@ -271,10 +276,12 @@ export default class RsvpForm extends Component {
         </FormGroup>
         {submitLoading && <Loading form={true} />}
         <Typography
+          align="justify"
           color="primary"
           style={{ marginTop: 20, textAlign: 'center' }}
           variant="subtitle2">
-          *Please create only <b>one</b> RSVP per family. Thank you!
+          *Please create only <b>one</b> RSVP per family. Thank you! After submitting, you will
+          receive a confirmation text.
         </Typography>
       </Container>
     );
