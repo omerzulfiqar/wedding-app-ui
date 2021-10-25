@@ -13,6 +13,7 @@ import {
   Table,
   Paper,
   TableFooter,
+  Button,
 } from '@mui/material';
 import Loading from '../components/Loading';
 import { style } from '@mui/system';
@@ -21,6 +22,7 @@ const styles = {
   container: {
     height: '44pc',
     overflowY: 'scroll',
+    textAlign: 'center',
   },
   table: {
     width: 'fit-content',
@@ -49,6 +51,9 @@ export default class GuestCount extends Component {
       mehndi: null,
       nikkah: null,
       reception: null,
+      mehndiTable: false,
+      nikkahTable: false,
+      recTable: false,
     };
   }
 
@@ -95,7 +100,7 @@ export default class GuestCount extends Component {
     return (
       <TableContainer style={{ marginTop: 20, textAlign: '-webkit-center' }}>
         <Typography variant="h6">{name} Attending Guests</Typography>
-        <Table stickyHeader size="small" component={Paper} style={styles.table}>
+        <Table stickyHeader size="small" style={styles.table}>
           <TableHead>
             <TableRow>
               <TableCell align="center" variant="head" style={styles.headerCell}>
@@ -137,18 +142,48 @@ export default class GuestCount extends Component {
   };
 
   render() {
-    const { guests, nikkah, mehndi, reception } = this.state;
+    const { guests, nikkah, mehndi, reception, mehndiTable, nikkahTable, recTable } = this.state;
     return (
       <Container style={styles.container}>
         {!guests && <Loading page={true} />}
         {guests && (
           <div id="counts">
-            {/* <Typography variant="h6">
-              Mehndi: {mehndi.length}, Nikkah: {nikkah.length}, Reception: {reception.length}
-            </Typography> */}
-            {this.renderEventTable(mehndi, 'Mehndi')}
-            {this.renderEventTable(nikkah, 'Nikkah')}
-            {this.renderEventTable(reception, 'Reception')}
+            <Typography variant="h5" style={{ marginBottom: 10 }}>
+              Attending Guest Count
+            </Typography>
+            <Button
+              style={{ margin: 5 }}
+              color="primary"
+              size="medium"
+              variant="contained"
+              onClick={() =>
+                this.setState({ mehndiTable: !mehndiTable, nikkahTable: false, recTable: false })
+              }>
+              Mehndi Table
+            </Button>
+            <Button
+              style={{ margin: 5 }}
+              color="primary"
+              size="medium"
+              variant="contained"
+              onClick={() =>
+                this.setState({ nikkahTable: !nikkahTable, mehndiTable: false, recTable: false })
+              }>
+              Nikkah Table
+            </Button>
+            <Button
+              style={{ margin: 5 }}
+              color="primary"
+              size="medium"
+              variant="contained"
+              onClick={() =>
+                this.setState({ recTable: !recTable, mehndiTable: false, nikkahTable: false })
+              }>
+              Reception Table
+            </Button>
+            {mehndiTable && this.renderEventTable(mehndi, 'Mehndi')}
+            {nikkahTable && this.renderEventTable(nikkah, 'Nikkah')}
+            {recTable && this.renderEventTable(reception, 'Reception')}
           </div>
         )}
       </Container>
