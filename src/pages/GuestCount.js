@@ -11,8 +11,6 @@ import {
   TableRow,
   TableBody,
   Table,
-  Paper,
-  TableFooter,
   Button,
 } from '@mui/material';
 import Loading from '../components/Loading';
@@ -99,7 +97,8 @@ export default class GuestCount extends Component {
   renderEventTable = (eventArr, name) => {
     return (
       <TableContainer style={{ marginTop: 20, textAlign: '-webkit-center' }}>
-        <Typography variant="h6">{name} Attending Guests</Typography>
+        <Typography variant="h6">{name}</Typography>
+        <Typography variant="h6">Total: {eventArr.length} </Typography>
         <Table stickyHeader size="small" style={styles.table}>
           <TableHead>
             <TableRow>
@@ -124,18 +123,6 @@ export default class GuestCount extends Component {
               </TableRow>
             ))}
           </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TableCell align="center" variant="footer">
-                <Typography style={styles.footerCell} variant="body2">
-                  Total
-                </Typography>
-              </TableCell>
-              <TableCell align="center" style={styles.footerCell} variant="footer">
-                <Typography variant="body2">{eventArr.length}</Typography>
-              </TableCell>
-            </TableRow>
-          </TableFooter>
         </Table>
       </TableContainer>
     );
