@@ -38,7 +38,7 @@ const styles = {
   },
   img: {
     maxWidth: '-webkit-fill-available',
-    marginTop: 20,
+    marginTop: 15,
     marginLeft: '2%',
   },
 };
@@ -137,6 +137,9 @@ export default class Home extends Component {
               <MasksIcon fontSize="medium" />
             </Button>
           </div>
+          <Typography color="primary" variant="body2" style={{ marginTop: 15 }}>
+            No boxed gifts please. Thank you! 😊
+          </Typography>
           <img src={img} style={styles.img} />
         </Container>
       </Container>
