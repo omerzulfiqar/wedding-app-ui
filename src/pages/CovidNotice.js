@@ -60,8 +60,7 @@ export default class CovidNotice extends Component {
           align="justify"
           paragraph={true}>
           We understand if you aren’t in full agreement with our decision, but we only ask that you
-          respect it, as we look to prioritze the safety of everyone attending. Please submit your
-          RSVP accordingly.
+          respect it, as we look to prioritze the safety of everyone attending.
         </Typography>
         <Typography
           style={{ marginTop: 20 }}
