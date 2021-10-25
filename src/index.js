@@ -38,6 +38,10 @@ const theme = createTheme({
       fontFamily: 'Alegreya SC',
       fontWeight: '700',
     },
+    h6: {
+      fontFamily: 'Alegreya SC',
+      fontWeight: '700',
+    },
     body1: {
       fontFamily: 'Alegreya SC',
       fontSize: 15,

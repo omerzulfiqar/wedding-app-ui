@@ -10,6 +10,7 @@ const styles = {
     textAlign: 'center',
     alignItems: 'center',
     margin: '50% auto',
+    padding: '20% 5%',
   },
   submitButton: {
     maxWidth: '60%',

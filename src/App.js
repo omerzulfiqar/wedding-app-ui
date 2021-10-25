@@ -6,6 +6,7 @@ import NewRSVP from './pages/NewRSVP';
 import UpdateRSVP from './pages/UpdateRSVP';
 import GuestCodeEntry from './pages/GuestCodeEntry';
 import CovidNotice from './pages/CovidNotice';
+import GuestCount from './pages/GuestCount';
 
 export default class App extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={GuestCodeEntry} />
+          <Route exact path="/WeddingGuestCount" component={GuestCount} />
           <Route exact path="/:guestCode" component={Home} />
           <Route exact path="/:guestCode/covidGuidelines" component={CovidNotice} />
           <Route exact path="/:guestCode/rsvp" component={NewRSVP} />
