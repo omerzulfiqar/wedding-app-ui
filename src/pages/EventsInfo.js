@@ -1,13 +1,25 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { Container, Typography, Stack, Link, Paper, Button } from '@mui/material';
+import {
+  Container,
+  Typography,
+  Stack,
+  Link,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+} from '@mui/material';
 import axios from 'axios';
 import { PRODUCT_API_URL } from '../config';
 import AddToCalendar from '@culturehq/add-to-calendar';
 import '../App.css';
 import Loading from '../components/Loading';
 import HomeIcon from '@mui/icons-material/Home';
+import mehndiImg from '../static/Mehndi.png';
+import nikkahImg from '../static/Nikkah.png';
+import receptionImg from '../static/Reception.png';
 
 const styles = {
   container: {
@@ -18,9 +30,8 @@ const styles = {
   },
   card: {
     backgroundColor: '#1D2C4C',
-    margin: '0 1%',
+    margin: '0 2%',
     borderRadius: 10,
-    padding: '5% 2%',
     color: '#EAD4B7',
   },
   eventInfo: {
@@ -95,27 +106,40 @@ export default class EventsInfo extends Component {
           <Stack spacing={4} style={{ marginTop: 10 }}>
             {allowedEvents.map((event) => {
               let name;
-              if (event.name === 'Mehndi') name = 'Mehndi Celebration';
-              else if (event.name === 'Nikkah') name = 'Nikkah Ceremony';
-              else if (event.name === 'Reception') name = 'Wedding Reception';
+              let img;
+              if (event.name === 'Mehndi') {
+                name = 'Mehndi Celebration';
+                img = mehndiImg;
+              } else if (event.name === 'Nikkah') {
+                name = 'Nikkah Ceremony';
+                img = nikkahImg;
+              } else if (event.name === 'Reception') {
+                name = 'Wedding Reception';
+                img = receptionImg;
+              }
               return (
                 <div id="event-info" key={event.name} style={styles.eventInfo}>
-                  <Paper key={event.name} style={styles.card} elevation={3}>
-                    <Typography variant="h5">{name}</Typography>
-                    <Typography variant="body1">
-                      <b>Venue:</b>{' '}
-                      <Link color="secondary" href={event.mapsLink}>
-                        {event.venue}
-                        {event.ballroom && `, ${event.ballroom}`}
-                      </Link>{' '}
-                    </Typography>
-                    <Typography id="event-address" variant="body1">
-                      <b>Address:</b> {event.address}
-                    </Typography>
-                    <Typography id="event-time" variant="body1">
-                      <b>Time: </b> {event.timeOfEvent}
-                    </Typography>
-                  </Paper>
+                  <Card key={event.name} style={styles.card}>
+                    <CardContent>
+                      <Typography variant="h5">{name}</Typography>
+                      <Typography variant="body1">
+                        <b>Venue:</b>{' '}
+                        <Link color="secondary" href={event.mapsLink}>
+                          {event.venue}
+                          {event.ballroom && `, ${event.ballroom}`}
+                        </Link>{' '}
+                      </Typography>
+                      <Typography id="event-address" variant="body1">
+                        <b>Address:</b> {event.address}
+                      </Typography>
+                      <Typography id="event-time" variant="body1">
+                        <b>Time: </b> {event.timeOfEvent}
+                      </Typography>
+                    </CardContent>
+                    <Link href={event.mapsLink} target="_blank" rel="noopener noreferrer">
+                      <CardMedia component="img" height="50%" image={img} />
+                    </Link>
+                  </Card>
                   {this.renderCalendarEvent(event)}
                 </div>
               );
