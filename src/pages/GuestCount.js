@@ -94,6 +94,20 @@ export default class GuestCount extends Component {
     }
   };
 
+  formatPhoneNumber = (str) => {
+    //Filter only numbers from the input
+    let cleaned = ('' + str).replace(/\D/g, '');
+
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+
+    if (match && str.length === 10) {
+      return match[1] + '-' + match[2] + '-' + match[3];
+    }
+
+    return str;
+  };
+
   renderEventTable = (eventArr, name) => {
     let totalGuests = 0;
     eventArr.forEach((guest) => {
@@ -112,20 +126,30 @@ export default class GuestCount extends Component {
               <TableCell align="center" variant="head" style={styles.headerCell}>
                 Guests
               </TableCell>
+              <TableCell align="center" variant="head" style={styles.headerCell}>
+                Phone
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {eventArr.map((guest) => (
-              <TableRow key={guest.guestId}>
-                <TableCell align="center" variant="body" style={styles.bodyCell}>
-                  <b>{guest.firstName}</b>
-                  {' ' + guest.lastName}
-                </TableCell>
-                <TableCell align="center" variant="body" style={styles.bodyCell}>
-                  {guest.numberOfGuests}
-                </TableCell>
-              </TableRow>
-            ))}
+            {eventArr.map((guest) => {
+              let phone = guest.phoneNumber;
+              phone = this.formatPhoneNumber(phone);
+              return (
+                <TableRow key={guest.guestId}>
+                  <TableCell align="center" variant="body" style={styles.bodyCell}>
+                    <b>{guest.firstName}</b>
+                    {' ' + guest.lastName}
+                  </TableCell>
+                  <TableCell align="center" variant="body" style={styles.bodyCell}>
+                    {guest.numberOfGuests}
+                  </TableCell>
+                  <TableCell align="center" variant="body" style={styles.bodyCell}>
+                    {phone}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
