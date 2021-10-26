@@ -199,7 +199,14 @@ export default class UpdateRsvpForm extends Component {
   render() {
     const { rsvpEntry, submitLoading, allowedEvents, error } = this.state;
 
-    if (!rsvpEntry) return <Loading page={true} />;
+    if (!rsvpEntry)
+      return (
+        <Container
+          maxWidth="sm"
+          style={{ marginTop: 20, marginBottom: 20, padding: '0 5%', height: '44pc' }}>
+          <Loading page={true} />
+        </Container>
+      );
     else if (error) {
       return this.renderError();
     }

@@ -210,7 +210,10 @@ export default class RsvpForm extends Component {
     const submitDisabled = !firstName || !lastName || !numberOfGuests || !phoneNumber;
 
     return (
-      <Container id="rsvp-form-container" maxWidth="sm" style={styles.container}>
+      <Container
+        id="rsvp-form-container"
+        maxWidth="sm"
+        style={!allowedEvents ? { height: '44pc' } : styles.container}>
         <FormGroup id="new-rsvp-form">
           <FormLabel>
             <Typography align="justify" color="primary" variant="body2">
