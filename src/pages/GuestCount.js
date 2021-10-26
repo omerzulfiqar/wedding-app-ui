@@ -95,10 +95,14 @@ export default class GuestCount extends Component {
   };
 
   renderEventTable = (eventArr, name) => {
+    let totalGuests = 0;
+    eventArr.forEach((guest) => {
+      totalGuests += parseInt(guest.numberOfGuests);
+    });
     return (
       <TableContainer style={{ marginTop: 20, textAlign: '-webkit-center' }}>
         <Typography variant="h6">{name}</Typography>
-        <Typography variant="h6">Total: {eventArr.length} </Typography>
+        <Typography variant="h6">Total: {totalGuests} </Typography>
         <Table stickyHeader size="small" style={styles.table}>
           <TableHead>
             <TableRow>
