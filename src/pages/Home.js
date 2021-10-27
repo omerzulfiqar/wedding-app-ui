@@ -116,6 +116,12 @@ export default class Home extends Component {
               onClick={() => this.props.history.push(`/${guestCode}/eventsInformation`)}>
               Events Info
             </Button>
+            <Button
+              style={styles.button}
+              variant="contained"
+              onClick={() => this.props.history.push(`/${guestCode}/guestList`)}>
+              Guest List
+            </Button>
           </Stack>
           <Button />
           {dialogOpen && (
