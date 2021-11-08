@@ -61,41 +61,41 @@ export default class EventSchedule extends Component {
           <Typography variant="body2" color="primary">
             7:00 PM
           </Typography>
-          <Typography color="primary">{'Bride and Groom Entrances'}</Typography>
+          <Typography color="primary">{'Bride & Groom Entrances'}</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
             7:30 PM
           </Typography>
-          <Typography color="primary">Cake Cutting</Typography>
-        </div>
-        <div>
-          <Typography variant="body2" color="primary">
-            7:45 PM
-          </Typography>
           <Typography color="primary">Speeches</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
-            8:15 PM
+            8:00 PM
+          </Typography>
+          <Typography color="primary">{'Performances & Cake Cutting'}</Typography>
+        </div>
+        <div>
+          <Typography variant="body2" color="primary">
+            8:30 PM
           </Typography>
           <Typography color="primary">Dinner Is Served</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
-            9:00 PM
+            9:30 PM
           </Typography>
           <Typography color="primary">Pictures</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
-            9:30 PM
+            10:30 PM
           </Typography>
           <Typography color="primary">Open Floor</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
-            10:45 PM
+            11:15 PM
           </Typography>
           <Typography color="primary">Bride and Groom Depart</Typography>
         </div>
@@ -130,25 +130,31 @@ export default class EventSchedule extends Component {
         </div>
         <div>
           <Typography variant="body2" color="primary">
-            7:00 PM
+            7:15 PM
           </Typography>
-          <Typography color="primary">{'Bride and Groom Entrances'}</Typography>
+          <Typography color="primary">{'Bride & Groom Entrance'}s</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
-            7:30 PM
+            7:45 PM
           </Typography>
           <Typography color="primary">Dance Performances</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
-            8:00 PM
+            8:30 PM
           </Typography>
-          <Typography color="primary">{'Dinner & Pictures'}</Typography>
+          <Typography color="primary">Dinner</Typography>
         </div>
         <div>
           <Typography variant="body2" color="primary">
             9:30 PM
+          </Typography>
+          <Typography color="primary">Pictures</Typography>
+        </div>
+        <div>
+          <Typography variant="body2" color="primary">
+            10:00 PM
           </Typography>
           <Typography color="primary">Open Floor</Typography>
         </div>
