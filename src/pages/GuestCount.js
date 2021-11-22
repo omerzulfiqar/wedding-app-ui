@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import axios from 'axios';
-import { PRODUCT_API_URL } from '../config';
+import { PRODUCT_API_URL, LOCAL_API_URL } from '../config';
 import {
   Container,
   Typography,
@@ -14,7 +14,6 @@ import {
   Button,
 } from '@mui/material';
 import Loading from '../components/Loading';
-import { style } from '@mui/system';
 
 const styles = {
   container: {
@@ -134,9 +133,10 @@ export default class GuestCount extends Component {
           <TableBody>
             {eventArr.map((guest) => {
               let phone = guest.phoneNumber;
+              const key = guest.firstName + guest.lastName;
               phone = this.formatPhoneNumber(phone);
               return (
-                <TableRow key={guest.guestId}>
+                <TableRow key={key}>
                   <TableCell align="center" variant="body" style={styles.bodyCell}>
                     <b>{guest.firstName}</b>
                     {' ' + guest.lastName}
@@ -154,6 +154,31 @@ export default class GuestCount extends Component {
         </Table>
       </TableContainer>
     );
+  };
+
+  sendSms = async () => {
+    // const guests = [
+    //   { name: 'Omer Zulfiqar', phone: '7039490280' },
+    //   { name: 'Kayanat Tanveer', phone: '5713279578' },
+    // ];
+    const { mehndi, nikkah, reception } = this.state;
+    const message =
+      "Today's the day! Kayanat & Omer's Mehndi is scheduled to begin at 6 PM. \nLocation 👉🏽 https://goo.gl/maps/mBTCuSu67j3ar8Vi8 \nEvent Schedule 👉🏽 https://www.omerandkayanat.com/mehndi/EventSchedule .\nParking is available outside the venue. Please be on time. We look forward to seeing you there!";
+    const date = new Date('December 23 2021').getDate();
+    let guests;
+
+    if (date === 23) guests = mehndi;
+    else if (date === 24) guests = nikkah;
+    else if (date === 26) guests = reception;
+
+    const data = { message, guests };
+    try {
+      // const res = await axios.post(`${LOCAL_API_URL}/eventDayInfo`, data);
+      // console.log(res);
+      console.log(guests);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -195,6 +220,14 @@ export default class GuestCount extends Component {
                 this.setState({ recTable: !recTable, mehndiTable: false, nikkahTable: false })
               }>
               Reception Table
+            </Button>
+            <Button
+              style={{ margin: 5 }}
+              color="primary"
+              size="medium"
+              variant="contained"
+              onClick={() => this.sendSms()}>
+              Send Event Day Info
             </Button>
             {mehndiTable && this.renderEventTable(mehndi, 'Mehndi')}
             {nikkahTable && this.renderEventTable(nikkah, 'Nikkah')}
