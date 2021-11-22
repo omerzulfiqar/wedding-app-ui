@@ -266,7 +266,7 @@ export default class RsvpForm extends Component {
             size="small"
             value={phoneNumber}
             onChange={this.handleInputChange}
-            helperText={'10 digit phone number only'}
+            helperText={'10 digit phone number only. No country code.'}
             FormHelperTextProps={{ style: styles.helperText }}
           />
           {allowedEvents && this.renderEventsCheckboxes()}
