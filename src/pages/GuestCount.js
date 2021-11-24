@@ -78,10 +78,24 @@ export default class GuestCount extends Component {
 
       guests.forEach((guest) => {
         if (guest.eventAttendance.Mehndi) {
-          mehndi.push(guest);
+          if (guest.firstName === 'Gulnar') {
+            const dup = { ...guest };
+            dup.numberOfGuests = 2;
+            mehndi.push(dup);
+          } else if (guest.firstName === 'Pushpaul') {
+            const dup = { ...guest };
+            dup.numberOfGuests = 3;
+            mehndi.push(dup);
+          } else mehndi.push(guest);
         }
         if (guest.eventAttendance.Nikkah) {
-          nikkah.push(guest);
+          if (guest.firstName === 'Komal') {
+            const dup = { ...guest };
+            dup.numberOfGuests = 1;
+            nikkah.push(dup);
+          } else {
+            nikkah.push(guest);
+          }
         }
         if (guest.eventAttendance.Reception) {
           reception.push(guest);
@@ -136,7 +150,7 @@ export default class GuestCount extends Component {
               let phone = guest.phoneNumber;
               phone = this.formatPhoneNumber(phone);
               return (
-                <TableRow key={guest.guestId}>
+                <TableRow key={guest.firstName + guest.lastName}>
                   <TableCell align="center" variant="body" style={styles.bodyCell}>
                     <b>{guest.firstName}</b>
                     {' ' + guest.lastName}
