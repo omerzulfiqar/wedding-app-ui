@@ -78,19 +78,27 @@ export default class GuestCount extends Component {
 
       guests.forEach((guest) => {
         if (guest.eventAttendance.Mehndi) {
-          if (guest.firstName === 'Gulnar') {
-            const dup = { ...guest };
+          const dup = { ...guest };
+          if (dup.firstName === 'Gulnar') {
             dup.numberOfGuests = 2;
             mehndi.push(dup);
-          } else if (guest.firstName === 'Pushpaul') {
-            const dup = { ...guest };
+          } else if (dup.firstName === 'Pushpaul') {
             dup.numberOfGuests = 3;
+            mehndi.push(dup);
+          } else if (dup.firstName === 'Aaliya') {
+            dup.numberOfGuests = 2;
+            mehndi.push(dup);
+          } else if (dup.firstName === 'Rehan') {
+            dup.numberOfGuests = 1;
             mehndi.push(dup);
           } else mehndi.push(guest);
         }
         if (guest.eventAttendance.Nikkah) {
-          if (guest.firstName === 'Komal') {
-            const dup = { ...guest };
+          const dup = { ...guest };
+          if (dup.firstName === 'Komal') {
+            dup.numberOfGuests = 1;
+            nikkah.push(dup);
+          } else if (dup.firstName === 'Rehan') {
             dup.numberOfGuests = 1;
             nikkah.push(dup);
           } else {
@@ -98,7 +106,13 @@ export default class GuestCount extends Component {
           }
         }
         if (guest.eventAttendance.Reception) {
-          reception.push(guest);
+          const dup = { ...guest };
+          if (dup.firstName === 'Pushpaul') {
+            dup.numberOfGuests = 2;
+            reception.push(dup);
+          } else {
+            reception.push(guest);
+          }
         }
       });
 
