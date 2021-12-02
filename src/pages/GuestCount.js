@@ -79,27 +79,32 @@ export default class GuestCount extends Component {
       guests.forEach((guest) => {
         if (guest.eventAttendance.Mehndi) {
           const dup = { ...guest };
-          if (dup.firstName === 'Gulnar') {
+          if (dup.firstName === 'Gulnar' || dup.firstName === 'Aaliya') {
             dup.numberOfGuests = 2;
             mehndi.push(dup);
           } else if (dup.firstName === 'Pushpaul') {
             dup.numberOfGuests = 3;
             mehndi.push(dup);
-          } else if (dup.firstName === 'Aaliya') {
-            dup.numberOfGuests = 2;
-            mehndi.push(dup);
-          } else if (dup.firstName === 'Rehan') {
+          } else if (dup.firstName === 'Rehan' || dup.firstName === 'Shah') {
             dup.numberOfGuests = 1;
             mehndi.push(dup);
           } else mehndi.push(guest);
         }
         if (guest.eventAttendance.Nikkah) {
           const dup = { ...guest };
-          if (dup.firstName === 'Komal') {
+          if (
+            dup.firstName === 'Komal' ||
+            dup.firstName === 'Rehan' ||
+            dup.firstName === 'Shah' ||
+            dup.firstName === 'Ana' ||
+            dup.firstName === 'Zehra' ||
+            dup.firstName === 'Noor' ||
+            dup.firstName === 'Cindy'
+          ) {
             dup.numberOfGuests = 1;
             nikkah.push(dup);
-          } else if (dup.firstName === 'Rehan') {
-            dup.numberOfGuests = 1;
+          } else if (dup.firstName === 'Rubina') {
+            dup.numberOfGuests = 2;
             nikkah.push(dup);
           } else {
             nikkah.push(guest);
