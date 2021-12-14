@@ -144,7 +144,7 @@ export default class Home extends Component {
             </Button>
           </div>
           <Typography color="primary" variant="body2" style={{ marginTop: 15 }}>
-            No boxed gifts please. Thank you! 😊
+            {"We don't have a wedding registry. No boxed gifts please. Thank you! 😊"}
           </Typography>
           <img src={img} style={styles.img} />
         </Container>
